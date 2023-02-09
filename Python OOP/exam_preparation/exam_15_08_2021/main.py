@@ -1,0 +1,17 @@
+from project.bakery import Bakery
+
+bakery = Bakery("My Bakery")
+bakery.add_food("Bread", "White", 2.50)
+bakery.add_food("Cake", "French", 5.50)
+bakery.add_drink("Tea", "Black tea", 200, "England")
+bakery.add_drink("Water", "Velingrad", 250, "Bulgaria")
+bakery.add_table("InsideTable", 1, 8)
+bakery.add_table("InsideTable", 2, 8)
+bakery.add_table("OutsideTable", 51, 8)
+print(bakery.reserve_table(8))
+print(bakery.order_food(51, "White", "French"))
+print(bakery.order_drink(2, "Black tea"))
+print(bakery.leave_table(51))
+print(bakery.leave_table(2))
+print(bakery.get_total_income())
+print(bakery.get_free_tables_info())
