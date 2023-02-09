@@ -1,0 +1,8 @@
+.venv
+venv
+.idea
+.vscode
+usefull.py
+_pycashe_
+*.docx
+*.doc
