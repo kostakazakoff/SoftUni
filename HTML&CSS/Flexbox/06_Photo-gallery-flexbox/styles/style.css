@@ -1,0 +1,31 @@
+body, ul, li{
+    display: flex;
+    justify-content: center;
+}
+body{
+    padding: 40px;
+}
+.gallery{
+    text-align: center;
+    vertical-align: middle;
+}
+ul{
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-inline-start: 0;
+    margin-block-start: 0;
+}
+li{
+    max-width: 300px;
+    aspect-ratio: 1/1.5;
+    border: 8px solid black;
+    padding: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+li img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

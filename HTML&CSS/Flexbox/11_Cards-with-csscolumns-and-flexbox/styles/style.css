@@ -1,0 +1,70 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(238,238,238);
+    display: grid;
+    grid-template-areas: 'masonry-content' 'flex-content';
+    justify-items: center;
+    gap: 20px;
+}
+.masonry{
+    grid-area: masonry-content;
+    display: grid;
+    grid-template-columns: repeat(3, 20vw);
+    /* grid-template-rows: masonry; */
+    grid-template-rows: [head] 40px [content] auto;
+    align-content: start;
+    gap: 20px;
+}
+.masonry h2{
+    grid-row: head;
+    grid-column: 1 / -1;
+}
+.masonry .card{
+    display: inline-block;
+    justify-self: start;
+    align-self: start;
+    padding: 10px;
+}
+.flex{
+    grid-area: flex-content;
+    width: 64vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 20px;
+}
+.flex h2{
+    flex-basis: 100%;
+}
+.card{
+    background-color: rgb(255,255,255);
+    width: 20vw;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    overflow: hidden;
+}
+.masonry .card{
+    display: inline-block;
+}
+.flex .card{
+    display: flex;
+    flex-direction: column;
+}
+.card section{
+    border-bottom: 1px solid black;
+}
+.flex .card section{
+    flex-grow: 1;
+}
+.card section h3, p{
+    margin: 10%;
+    font-weight: 400;
+}
+.card footer p{
+    margin: 10%;
+}
+.card img{
+    width: 100%;
+    object-fit: cover;
+}

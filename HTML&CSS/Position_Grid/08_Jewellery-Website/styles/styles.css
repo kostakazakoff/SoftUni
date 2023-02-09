@@ -1,0 +1,29 @@
+#model{
+    position: absolute;
+}
+.frame_container{
+    width: 178px;
+    height: 247px;
+    position: absolute;
+    top: 250px;
+    left: 180px;
+}
+.frame{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.price_container{
+    position: relative;
+    top: 200px;
+    left: 8px;
+}
+h3{
+    font-size: 16px;
+    margin: 0;
+}
+span{
+    padding-left: 3px;
+    color: gray;
+    font-size: 14px;
+}

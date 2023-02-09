@@ -1,0 +1,49 @@
+html{
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    text-align: center;
+}
+body{
+    height: 100vh;
+}
+div{
+    max-width: 65vw;
+    margin: auto;
+    margin-top: calc(50vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+section{
+    display: flex;
+    align-items: center;
+}
+.week{
+    flex-wrap: wrap;
+    width: 50vw;
+}
+.week-title{
+    flex-basis: 100%;
+}
+span{
+    border: 1px solid black;
+    padding: 12px;
+}
+.week span{
+    height: 100px;
+}
+.week .work-days{
+    width: 20%;
+}
+.week .weekend{
+    width: 50%;
+}
+.notes span{
+    height: 200px;
+    width: 15vw;
+}
+.notes{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}

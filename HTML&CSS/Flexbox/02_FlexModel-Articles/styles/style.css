@@ -1,0 +1,20 @@
+body p{
+    font-family: Helvetica, sans-serif;
+    line-height: 1.5;
+}
+body h2{
+    font-family: Georgia, serif;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+}
+section{
+    max-width: 70vw;
+    height: 70vh;
+    margin: 10% auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 4rem;
+}

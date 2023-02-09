@@ -1,0 +1,40 @@
+*, ::after, ::before {
+    box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
+}
+
+body {
+    margin: 40px 80px;
+}
+nav {
+    display: inline-block;
+}
+h1 {
+    color: black;
+    margin-right: 80px;
+    font-size: 40px;
+    font-weight: 700;
+}
+h2 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 400;
+    font-size: 32px;
+}
+li {
+    display: inline-block;
+    margin-right: 20px;
+}
+p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+a {
+    text-decoration: none;
+    color: green;
+}
+header h1 {
+    display: inline-block;
+}
+header {
+    border-bottom: 2px solid;
+}

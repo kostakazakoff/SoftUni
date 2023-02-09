@@ -1,0 +1,19 @@
+.container{
+    width: 626px;
+    height: 352px;
+    position: relative;
+}
+.img_bg{
+    width: 100%;
+    aspect-ratio: 1/1;
+    position: absolute;
+}
+h1{
+    position: absolute;
+    color: antiquewhite;
+    text-shadow: 1px 1px 20px black;
+    position: absolute;
+    top: 60px;
+    left: 180px;
+    font-size: 30px;
+}

@@ -1,0 +1,88 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 5%;
+}
+
+.heading {
+    font-family: Georgia, serif;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.8em;
+}
+
+h3 {
+    font-size: 1.6em;
+}
+
+h4 {
+    font-size: 1.4em;
+}
+
+h5 {
+    font-size: 1.2em;
+}
+
+h6 {
+    font-size: 1em;
+}
+
+ul {
+    list-style: square;
+}
+
+ul ul {
+    list-style: disc;
+}
+
+ul ul ul {
+    list-style: circle;
+}
+
+ol {
+    list-style: decimal;
+}
+
+table {
+    text-align: left;
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid lightgray;
+    text-indent: 10px;
+}
+
+tr:nth-child(odd) {
+    background-color: rgb(236, 236, 236);
+}
+
+thead :first-child {
+    background-color: rgb(205, 203, 203);
+}
+
+td {
+    border-left: solid lightgray;
+    border: 1px solid lightgray;
+}
+
+blockquote {
+    border-left: 3px solid lightgray;
+    font-style: italic;
+    padding: 10px 0px 10px 24px;
+}
+
+blockquote p:last-child {
+    text-align: right;
+}

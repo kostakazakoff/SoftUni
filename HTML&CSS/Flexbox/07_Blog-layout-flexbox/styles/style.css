@@ -1,0 +1,72 @@
+html{
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background-color: rgb(238,238,238);
+    padding: 20px 60px;
+}
+.page{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5%;
+}
+header{
+    height: 80px;
+    border-bottom: 2px solid black;
+}
+h2, h3{
+    font-family: Georgia, serif;
+}
+h1, h2, h3{
+    margin-top: 24px;
+}
+img{
+    border: 2px solid black;
+    padding: 6px;
+    background-color: rgb(255,255,255);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
+}
+.img1{
+    float: right;
+    margin: 12px 0 12px 24px;
+}
+.img2{
+    float: left;
+    margin: 12px 24px 12px 0;
+}
+header{
+    flex-basis: 100%;
+}
+main{
+    flex-basis: 70%;
+}
+aside{
+    flex-grow: 1;
+}
+p{
+    margin: 12px 0 12px 0;
+    font-size: 14px;
+}
+quote{
+    display: inline-block;
+    width: 45%;
+    
+    float: right;
+    border-left: 2px solid darkgray;
+    font-family: Georgia, serif;
+    color: darkgray;
+    font-style: italic;
+    
+}
+quote p{
+    vertical-align: top;
+    padding: 0 12px 0 12px;
+    margin-top: 0;
+}
+.author{
+    text-align: right;
+}
+a{
+    text-decoration: none;
+    color: rgb(0, 153,0);
+}

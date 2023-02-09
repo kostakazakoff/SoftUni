@@ -1,0 +1,28 @@
+body{
+    background-color: rgb(238,238,238);
+    width: 80vw;
+    margin: auto;
+    display: flex;
+    gap: 2%;
+    align-items: center;
+    justify-content: center;
+}
+.container{
+    background-color: black;
+    display: inline-block;
+    width: 100px;
+    height: 400px;
+    overflow: hidden;
+    align-self: center;
+    border-radius: 6px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    transition: width 300ms linear;
+    display: flex;
+}
+.container img{
+    object-fit: cover;
+    margin: 0 auto;
+}
+.container:hover{
+    width: 640px;
+}

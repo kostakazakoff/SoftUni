@@ -1,0 +1,102 @@
+body{
+    display: grid;
+    padding: 60px 80px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    grid-template-rows: 40px 5px auto;
+    grid-template-columns: 7fr 3fr;
+    grid-template-areas:
+        'head head'
+        'line line'
+        'main aside';
+    gap: 10px;
+    column-gap: 60px;
+    background-color: rgb(238, 238, 238);
+}
+.header_nav, .head{
+    grid-area: head;
+    display: inline-block;
+}
+.site_logo{
+    display: inline-block;
+    position: absolute;
+    font-size: 32px;
+    margin: 0;
+    font-weight: 700;
+}
+.header_nav{
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    margin: 6px 80px 0 0;
+}
+.header_nav ul{
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+}
+.header_nav ul li{
+    display: inline-block;
+    padding-left: 20px;
+}
+main{
+    grid-area: main;
+}
+aside{
+    grid-area: aside;
+}
+h1, h2, h3{
+    font-family: Georgia, serif;
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+img{
+    border: 2px solid black;
+    padding: 6px;
+    background-color: white;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
+}
+.float_right{
+    float: right;
+    margin: 20px 0 6px 20px;
+}
+.float_left{
+    float: left;
+    margin: 20px 20px 6px 0;
+}
+a{
+    text-decoration: none;
+    color: rgb(0, 102, 0);
+}
+section, blockquote{
+    display: inline-block;
+}
+section p, blockquote p{
+    margin: 0;
+}
+.left_section{
+    width: 45%;
+    padding-right: 4%;
+    border-right: 2px solid gray;
+}
+.right_section{
+    width: 45%;
+    padding-left: 4%;
+    font-family: Georgia, serif;
+    font-style: italic;
+    color: gray;
+    vertical-align: top;
+}
+p{
+    margin: 20px 0 20px 0;
+}
+.author_name{
+    text-align: right;
+    padding-top: 20px;
+}
+.line{
+    grid-area: line;
+    top: 0;
+    border-top: 3px solid black;
+}

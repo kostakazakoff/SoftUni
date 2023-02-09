@@ -1,0 +1,22 @@
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+main {
+    width: 900px;
+    height: 140px;
+}
+img {
+    border-right: 1px solid #d1d1d1;
+    margin-right: 19px;
+    padding-right: 19px;
+    float: left;
+}
+p {
+    display: inline-block;
+    font-size: 20px;
+    line-height: 30px;
+    color: #2e2e2e;
+    text-align: justify;
+    width: 50%;
+}
