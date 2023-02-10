@@ -2,23 +2,27 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(238,238,238);
     display: grid;
-    grid-template-areas: 'masonry-content' 'flex-content';
+    grid-template-areas: 'masonry-head' 'masonry-content' 'flex-content';
     justify-items: center;
     gap: 20px;
 }
+body>h2{
+    grid-area: masonry-head;
+    justify-self: left;
+    margin: 24px 18vw;
+}
 .masonry{
+    height: 2200px;
+    max-width: 64vw;
     grid-area: masonry-content;
-    display: grid;
-    grid-template-columns: repeat(3, 20vw);
-    /* grid-template-rows: masonry; */
-    grid-template-rows: [head] 40px [content] auto;
-    align-content: start;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: center;
     gap: 20px;
 }
-.masonry h2{
-    grid-row: head;
-    grid-column: 1 / -1;
-}
+
 .masonry .card{
     display: inline-block;
     justify-self: start;
@@ -36,6 +40,7 @@ body{
 }
 .flex h2{
     flex-basis: 100%;
+    margin-bottom: 24px;
 }
 .card{
     background-color: rgb(255,255,255);
