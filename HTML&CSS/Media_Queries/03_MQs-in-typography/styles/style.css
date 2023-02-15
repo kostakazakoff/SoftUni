@@ -1,0 +1,116 @@
+html{
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+body{
+    background-color: rgb(238,238,238);
+    padding: 20px 60px;
+}
+.page{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5%;
+}
+header{
+    padding-bottom: 24px;
+    border-bottom: 2px solid black;
+}
+h2, h3{
+    font-family: Georgia, serif;
+}
+h1, h2, h3{
+    margin-top: 24px;
+}
+img{
+    border: 2px solid black;
+    padding: 6px;
+    background-color: rgb(255,255,255);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
+}
+.img1{
+    float: right;
+    margin: 12px 0 12px 24px;
+}
+.img2{
+    float: left;
+    margin: 12px 24px 12px 0;
+}
+header{
+    flex-basis: 100%;
+}
+main{
+    flex-basis: 100%;
+}
+p{
+    margin: 12px 0 12px 0;
+}
+blockquote{
+    display: inline-block;
+    width: 45%;
+    float: right;
+    border-left: 2px solid darkgray;
+    font-family: Georgia, serif;
+    color: darkgray;
+    font-style: italic;
+}
+blockquote p{
+    vertical-align: top;
+    padding: 0 12px 0 12px;
+    margin-top: 0;
+}
+.author{
+    text-align: right;
+}
+a{
+    text-decoration: none;
+    color: rgb(0, 153,0);
+}
+
+
+@media screen and (max-width: 500px){
+    html{
+        font-size: 12px;
+    }
+    header{
+        padding-bottom: 16px;
+    }
+    body{
+        padding: 12px 32px;
+    }
+    .img1, .img2{
+        display: block;
+        float: none;
+        margin: 12px 0;
+    }
+    blockquote{
+        display: block;
+        float: none;
+        width: 100%;
+        margin: 12px 0 12px 12px;
+    }
+}
+@media (min-width: 501px){
+    html{
+        font-size: 14px;
+    }
+}
+@media (min-width: 601px){
+    html{
+        font-size: 16px;
+    }
+}
+@media (min-width: 801px){
+    html{
+        font-size: 18px;
+    }
+}
+@media (min-width: 1301px){
+    html{
+        font-size: 21px;
+    }
+}
+@media (min-width: 1801px){
+    html{
+        font-size:23px;
+    }
+}
