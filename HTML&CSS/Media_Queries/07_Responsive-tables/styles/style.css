@@ -1,0 +1,53 @@
+html{
+    font-family: Helvetica, sans-serif;
+}
+body{
+    background-color: #eee;
+    padding: 24px;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td{
+    width: 30%;
+    text-align: left;
+    padding: 4px 8px;
+    border: 1px solid gray;
+}
+th{
+    background-color: #333333;
+    color: white;
+}
+tr:nth-child(even){
+    background-color: #eee;
+}
+tr:nth-child(odd){
+    background-color: white;
+}
+
+@media screen and (max-width: 500px) {
+    html{
+        font-size: 12px;
+    }
+    table{
+        display: flex;
+    }
+    tbody{
+        display: inline-flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+    th, td{
+        width: auto;
+    }
+    tr{
+        display: inline-flex;
+        flex-direction: column;
+    }
+    th{
+        background-color: white;
+        color: black;
+    }
+}
+
