@@ -1,16 +1,11 @@
-function sameNumbers(number){
-    let same = true;
-    let sum = 0;
+function sameNumbers(number) {
+    let same = [];
     let numberAsArr = number.toString().split('');
-    for (let i = 1; i < numberAsArr.length; i++){
-        if (numberAsArr[i] !== numberAsArr [i-1]){
-            same = false;
-            break;
-        }
+    let sum = Number(numberAsArr[0]);
+    for (let i = 1; i < numberAsArr.length; i++) {
+        same.push(numberAsArr[i] === numberAsArr[i - 1]);
+        sum += Number(numberAsArr[i])
     }
-    sum = numberAsArr.reduce((a, b) => Number(a) + Number(b), 0)
-    console.log(same)
+    console.log(same.every((n) => n))
     console.log(sum)
 }
-
-sameNumbers(1234)

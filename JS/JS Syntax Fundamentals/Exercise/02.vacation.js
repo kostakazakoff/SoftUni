@@ -1,6 +1,7 @@
 function vacation(groupQuantity, typeOfGroup, dayOfWeek){
     let ticketPrice;
     let totalPrice;
+    let discount = 1;
     switch(typeOfGroup){
         case 'Students':
             switch(dayOfWeek){
@@ -14,9 +15,8 @@ function vacation(groupQuantity, typeOfGroup, dayOfWeek){
                     ticketPrice = 10.46
                     break;
             }
-            totalPrice = groupQuantity * ticketPrice
             if (groupQuantity >= 30){
-                totalPrice *= 0.85;
+                discount = 0.85;
             }
             break;
         case 'Business':
@@ -34,7 +34,6 @@ function vacation(groupQuantity, typeOfGroup, dayOfWeek){
             if (groupQuantity >= 100){
                 groupQuantity -= 10;
             }
-            totalPrice = groupQuantity * ticketPrice
             break;
         case 'Regular':
             switch(dayOfWeek){
@@ -48,11 +47,11 @@ function vacation(groupQuantity, typeOfGroup, dayOfWeek){
                     ticketPrice = 22.50
                     break;
             }
-            totalPrice = groupQuantity * ticketPrice
             if (groupQuantity >= 10 && groupQuantity <= 20){
-                totalPrice *= 0.95
+                discount = 0.95
             }
             break;
     }
+    totalPrice = groupQuantity * ticketPrice * discount
     console.log(`Total price: ${totalPrice.toFixed(2)}`)
 }
