@@ -1,6 +1,6 @@
 function stringSubstring(word, sequence){
     let found = false;
-    let arr = sequence.split(' ')
+    sequence.split(' ')
     .forEach(element => {
         if (word.toLowerCase() === element.toLowerCase()){
             console.log(word);
@@ -12,3 +12,7 @@ function stringSubstring(word, sequence){
         console.log(`${word} not found!`)
     }
 }
+
+// stringSubstring('javascript',
+// 'JavaScript is the best programming language'
+// )
