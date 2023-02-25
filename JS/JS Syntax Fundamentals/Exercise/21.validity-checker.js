@@ -1,3 +1,22 @@
+function validityChecker(x1, y1, x2, y2) {
+    function distance(x1, y1, x2, y2) {
+        let distX = x2 - x1;
+        let distY = y2 - y1;
+        let status = Number.isInteger(Math.sqrt(distX ** 2 + distY ** 2));
+        switch (status) {
+            case true:
+                console.log(`{${x1}, ${y1}} to {${x2}, ${y2}} is valid`);
+                break;
+            case false:
+                console.log(`{${x1}, ${y1}} to {${x2}, ${y2}} is invalid`);
+        };
+    };
+    distance(x1, y1, 0, 0);
+    distance(x2, y2, 0, 0);
+    distance(x1, y1, x2, y2);
+}
+
+
 // function validityChecker(x1, y1, x2, y2){
 //     let vars = [
 //         [x1, y1, 0, 0],
@@ -19,25 +38,6 @@
 //         };
 //     });
 // }
-
-function validityChecker(x1, y1, x2, y2) {
-    function distance(x1, y1, x2, y2) {
-        let distX = x2 - x1;
-        let distY = y2 - y1;
-        let status = Number.isInteger(Math.sqrt(distX ** 2 + distY ** 2));
-        switch (status) {
-            case true:
-                console.log(`{${x1}, ${y1}} to {${x2}, ${y2}} is valid`);
-                break;
-            case false:
-                console.log(`{${x1}, ${y1}} to {${x2}, ${y2}} is invalid`);
-        };
-    };
-    distance(x1, y1, 0, 0);
-    distance(x2, y2, 0, 0);
-    distance(x1, y1, x2, y2);
-}
-
 
 
 // validityChecker(3, 0, 0, 4);

@@ -1,6 +1,6 @@
 function wordsUppercase(sentence){
     result = [];
-    const regex = /[^A-z]+/g;
+    const regex = /[^\w]+/g;
     let sentAsArr = sentence.split(regex)
     .forEach(word => {
         if (word){
