@@ -3,7 +3,7 @@ function login(arr){
     let passwords = arr.slice(1)
     let counter = 0;
     for (let i = 0; i < passwords.length; i++){
-        counter += 1;
+        counter ++;
         let pwd = passwords[i];
         pwd = pwd.split('').reverse(pwd).join('');
         if (username === pwd){
