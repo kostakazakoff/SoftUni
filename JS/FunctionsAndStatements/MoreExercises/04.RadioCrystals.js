@@ -1,52 +1,52 @@
 function prepareCrystals([neededSize, ...crystals]) {
     crystals
         .forEach(size => {
-            let transportingWashing = () => {
+            const transportingWashing = () => {
                 size = Math.floor(size);
                 console.log('Transporting and washing');
             }
-                let cut = 0;
-                let lap = 0;
-                let grind = 0;
-                let etch = 0;
+            let cutCounter = 0;
+            let lapCounter = 0;
+            let grindCounter = 0;
+            let etchCounter = 0;
 
             console.log(`Processing chunk ${size} microns`);
             if (size > neededSize) {
                 while (size / 4 >= neededSize) {
-                    cut += 1;
+                    cutCounter += 1;
                     size /= 4;
                 }
-                if (cut) {
-                    console.log(`Cut x${cut}`);
+                if (cutCounter) {
+                    console.log(`Cut x${cutCounter}`);
                     transportingWashing();
                 }
 
                 if (size - size * 0.2 < size - 20) {
                     while (size - size * 0.2 >= neededSize - 1) {
-                        lap += 1;
+                        lapCounter += 1;
                         size -= size * 0.2;
                     }
-                    if (lap) {
-                        console.log(`Lap x${lap}`)
+                    if (lapCounter) {
+                        console.log(`Lap x${lapCounter}`)
                         transportingWashing();
                     }
 
                 }
-                while (size - 20 >= neededSize -1) {
-                    grind += 1;
+                while (size - 20 >= neededSize - 1) {
+                    grindCounter += 1;
                     size -= 20;
                 }
-                if (grind) {
-                    console.log(`Grind x${grind}`);
+                if (grindCounter) {
+                    console.log(`Grind x${grindCounter}`);
                     transportingWashing();
                 }
 
                 while (size - 2 >= neededSize - 1) {
-                    etch += 1;
+                    etchCounter += 1;
                     size -= 2;
                 }
-                if (etch) {
-                    console.log(`Etch x${etch}`);
+                if (etchCounter) {
+                    console.log(`Etch x${etchCounter}`);
                     transportingWashing();
                 }
 
