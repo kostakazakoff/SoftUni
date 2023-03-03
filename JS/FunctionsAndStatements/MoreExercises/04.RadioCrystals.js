@@ -9,7 +9,6 @@ function prepareCrystals([neededSize, ...crystals]) {
                 let lap = 0;
                 let grind = 0;
                 let etch = 0;
-                let xRay = 0;
 
             console.log(`Processing chunk ${size} microns`);
             if (size > neededSize) {
@@ -23,7 +22,7 @@ function prepareCrystals([neededSize, ...crystals]) {
                 }
 
                 if (size - size * 0.2 < size - 20) {
-                    while (size - size * 0.2 >= neededSize) {
+                    while (size - size * 0.2 >= neededSize - 1) {
                         lap += 1;
                         size -= size * 0.2;
                     }
@@ -33,7 +32,7 @@ function prepareCrystals([neededSize, ...crystals]) {
                     }
 
                 }
-                while (size - 20 >= neededSize) {
+                while (size - 20 >= neededSize -1) {
                     grind += 1;
                     size -= 20;
                 }
@@ -42,7 +41,7 @@ function prepareCrystals([neededSize, ...crystals]) {
                     transportingWashing();
                 }
 
-                while (size - 2 >= neededSize) {
+                while (size - 2 >= neededSize - 1) {
                     etch += 1;
                     size -= 2;
                 }
@@ -51,11 +50,9 @@ function prepareCrystals([neededSize, ...crystals]) {
                     transportingWashing();
                 }
 
-                if (size - 1 >= neededSize) {
-                    xRay += 1;
-                    size -= 1;
-                    console.log(`X-ray x${xRay}`);
-                    transportingWashing();
+                if (size < neededSize) {
+                    size += 1;
+                    console.log(`X-ray x1`);
                 }
 
             }
