@@ -5,59 +5,56 @@ function prepareCrystals([neededSize, ...crystals]) {
                 size = Math.floor(size);
                 console.log('Transporting and washing');
             }
-            let operations = {
-                'Cut': 0,
-                'Lap': 0,
-                'Grind': 0,
-                'Etch': 0,
-                'X-ray': 0,
-                'Transporting and washing ': 0
-            }
+                let cut = 0;
+                let lap = 0;
+                let grind = 0;
+                let etch = 0;
+                let xRay = 0;
 
             console.log(`Processing chunk ${size} microns`);
             if (size > neededSize) {
                 while (size / 4 >= neededSize) {
-                    operations['Cut'] += 1;
+                    cut += 1;
                     size /= 4;
                 }
-                if (operations['Cut']) {
-                    console.log(`Cut x${operations['Cut']}`);
+                if (cut) {
+                    console.log(`Cut x${cut}`);
                     transportingWashing();
                 }
 
                 if (size - size * 0.2 < size - 20) {
                     while (size - size * 0.2 >= neededSize) {
-                        operations['Lap'] += 1;
+                        lap += 1;
                         size -= size * 0.2;
                     }
-                    if (operations['Lap']) {
-                        console.log(`Lap x${operations['Lap']}`)
+                    if (lap) {
+                        console.log(`Lap x${lap}`)
                         transportingWashing();
                     }
 
                 }
                 while (size - 20 >= neededSize) {
-                    operations['Grind'] += 1;
+                    grind += 1;
                     size -= 20;
                 }
-                if (operations['Grind']) {
-                    console.log(`Grind x${operations['Grind']}`);
+                if (grind) {
+                    console.log(`Grind x${grind}`);
                     transportingWashing();
                 }
 
                 while (size - 2 >= neededSize) {
-                    operations['Etch'] += 1;
+                    etch += 1;
                     size -= 2;
                 }
-                if (operations['Etch']) {
-                    console.log(`Etch x${operations['Etch']}`);
+                if (etch) {
+                    console.log(`Etch x${etch}`);
                     transportingWashing();
                 }
 
                 if (size - 1 >= neededSize) {
-                    operations['X-ray'] += 1;
+                    xRay += 1;
                     size -= 1;
-                    console.log(`X-ray x${operations['X-ray']}`);
+                    console.log(`X-ray x${xRay}`);
                     transportingWashing();
                 }
 
