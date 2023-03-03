@@ -54,11 +54,9 @@ function prepareCrystals([neededSize, ...crystals]) {
                     transportingWashing();
                 }
 
-                while (size - 1 >= neededSize) {
+                if (size - 1 >= neededSize) {
                     operations['X-ray'] += 1;
                     size -= 1;
-                }
-                if (operations['X-ray']) {
                     console.log(`X-ray x${operations['X-ray']}`);
                     transportingWashing();
                 }
@@ -68,4 +66,4 @@ function prepareCrystals([neededSize, ...crystals]) {
         });
 }
 
-// prepareCrystals([1375, 50000])
+prepareCrystals([1375, 50000])
