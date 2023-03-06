@@ -1,5 +1,6 @@
 function printDna(n) {
-    let symbols;
+    let firstChar;
+    let secondChar;
     let line;
     let index;
     const dnaSeq = 'ATCGTTAGGG';
@@ -8,7 +9,7 @@ function printDna(n) {
         let stars = '';
         let dashes = '';
         index = (i * 2 % dnaSeq.length);
-        symbols = dnaSeq.slice(index, index+2).split('');
+        [firstChar, secondChar] = dnaSeq.slice(index, index+2).split('');
 
         if (i % 4 === 0) {
             stars = '*'.repeat(2);
@@ -19,7 +20,7 @@ function printDna(n) {
             dashes = '-'.repeat(4);
         }
 
-        line = `${stars}${symbols[0]}${dashes}${symbols[1]}${stars}`;
+        line = `${stars}${firstChar}${dashes}${secondChar}${stars}`;
         console.log(line);
     }
 }
