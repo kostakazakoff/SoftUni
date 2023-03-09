@@ -4,7 +4,7 @@ function moviesOrganiser(arr) {
     function commandParser(command) {
         if (command.includes('addMovie')) {
             movieName = command.split('addMovie ')[1];
-            return ['addMovie', movieName, null];
+            return ['addMovie', movieName];
         } else if (command.includes('directedBy')) {
             [movieName, value] = command.split(' directedBy ');
             return ['directedBy', movieName, value];
@@ -38,9 +38,9 @@ function moviesOrganiser(arr) {
     }
 }
 
-// moviesOrganiser(['addMovie The Avengers',
-//     'addMovie Superman',
-//     'The Avengers directedBy Anthony Russo',
-//     'The Avengers onDate 30.07.2010',
-//     'Captain America onDate 30.07.2010',
-//     'Captain America directedBy Joe Russo'])
+moviesOrganiser(['addMovie The Avengers',
+    'addMovie Superman',
+    'The Avengers directedBy Anthony Russo',
+    'The Avengers onDate 30.07.2010',
+    'Captain America onDate 30.07.2010',
+    'Captain America directedBy Joe Russo'])
