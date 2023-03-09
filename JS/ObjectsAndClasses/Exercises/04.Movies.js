@@ -4,7 +4,7 @@ function moviesOrganiser(arr) {
     function commandParser(command) {
         if (command.includes('addMovie')) {
             movieName = command.split('addMovie ')[1];
-            return ['addMovie', movieName, ''];
+            return ['addMovie', movieName, null];
         } else if (command.includes('directedBy')) {
             [movieName, value] = command.split(' directedBy ');
             return ['directedBy', movieName, value];
@@ -31,7 +31,10 @@ function moviesOrganiser(arr) {
     });
 
     for (movie of allMovies) {
-        console.log(JSON.stringify(movie));
+        if (movie.name && movie.director && movie.date) {
+            console.log(JSON.stringify(movie));
+        }
+        
     }
 }
 
