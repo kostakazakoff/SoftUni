@@ -35,9 +35,9 @@ function moviesOrganiser(arr) {
     }
 }
 
-moviesOrganiser(['addMovie The Avengers',
-    'addMovie Superman',
-    'The Avengers directedBy Anthony Russo',
-    'The Avengers onDate 30.07.2010',
-    'Captain America onDate 30.07.2010',
-    'Captain America directedBy Joe Russo'])
+// moviesOrganiser(['addMovie The Avengers',
+//     'addMovie Superman',
+//     'The Avengers directedBy Anthony Russo',
+//     'The Avengers onDate 30.07.2010',
+//     'Captain America onDate 30.07.2010',
+//     'Captain America directedBy Joe Russo'])
