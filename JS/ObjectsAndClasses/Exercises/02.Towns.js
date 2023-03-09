@@ -17,6 +17,6 @@ function townsLocation(arr) {
     });
 }
 
-// townsLocation(['Sofia | 42.696552 | 23.32601',
-// 'Beijing | 39.913818 | 116.363625']
-// )
+townsLocation(['Sofia | 42.696552 | 23.32601',
+'Beijing | 39.913818 | 116.363625']
+)
