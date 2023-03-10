@@ -4,8 +4,7 @@ function dictionary(arr) {
             Object.assign(data, JSON.parse(el));
             return data;
         }, {})
-    )
-        .sort().forEach(term => {
+    ).sort().forEach(term => {
             console.log(`Term: ${term[0]} => Definition: ${term[1]}`)
         })
 }
