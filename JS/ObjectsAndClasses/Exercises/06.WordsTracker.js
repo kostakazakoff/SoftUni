@@ -1,12 +1,14 @@
 function wordsTracker([searchWords, ...sentence]) {
     searchWords = searchWords.split(' ')
-    searchWords.reduce((data, word) => {
-        let count = sentence.filter(el => el == word).length;
-        data.push({ word, count });
-        return data;
-    }, [])
-        .sort((a, b) => Object.values(b)[1] - Object.values(a)[1])
-        .forEach(line => console.log(`${line.word} - ${line.count}`))
+    Object.entries(
+        searchWords.reduce((data, word) => {
+            let count = sentence.filter(el => el == word).length;
+            data[word] = count;
+            return data;
+        }, {})
+    )
+    .sort((a, b) => b[1] - a[1])
+    .forEach(line => console.log(`${line[0]} - ${line[1]}`))
 }
 
 // wordsTracker([
