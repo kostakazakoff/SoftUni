@@ -20,24 +20,25 @@ function FlightSchedule(matrix) {
         let statusChange = info[1];
         flightToChange = flights[flightNumber];
         if (flightToChange) {
-            flights[flightNumber][1] = `Status: '${statusChange}'` ;
+            flights[flightNumber][1] = `Status: '${statusChange}'`;
+        }
+    }
+
+    function print(status) {
+        for (let number in flights) {
+            if (flights[number][1] == status) {
+                console.log(`{ ${flights[number].join(', ')} }`);
+            }
         }
     }
 
     if (changedFlightStatuses) {
-        for (let number in flights) {
-            if (flights[number][1] == "Status: 'Cancelled'") {
-                console.log(`{ ${flights[number].join(', ')} }`);
-            }
-        }
+        print("Status: 'Cancelled'");
     } else {
-        for (let number in flights) {
-            if (flights[number][1] == "Status: 'Ready to fly'") {
-                console.log(`{ ${flights[number].join(', ')} }`);
-        }
+        print("Status: 'Ready to fly'");
     }
 }
-}
+
 
 // FlightSchedule([['WN269 Delaware',
 // 'FL2269 Oregon',
