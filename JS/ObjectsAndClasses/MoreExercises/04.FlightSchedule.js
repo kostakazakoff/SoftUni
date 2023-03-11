@@ -6,7 +6,7 @@ function FlightSchedule(matrix) {
         let obj = arr.reduce((data, flght, info) => {
             [flght, ...info] = flght.split(' ');
             info = info.join(' ');
-            data[flght] = [info, 'Ready to fly'];
+            data[flght] = [`Destination: '${info}'`, `Status: 'Ready to fly'`];
             return data;
         }, {})
         return obj;
@@ -20,24 +20,23 @@ function FlightSchedule(matrix) {
         let statusChange = info[1];
         flightToChange = flights[flightNumber];
         if (flightToChange) {
-            flights[flightNumber][1] = statusChange;
-            let flightDestination = flights[flightNumber][0];
-            changedFlightStatuses[flightDestination] = statusChange;
+            flights[flightNumber][1] = `Status: '${statusChange}'` ;
         }
     }
 
     if (changedFlightStatuses) {
-        Object.entries(flights).forEach(flght => {
-            if (flght[1][1] == 'Cancelled') {
-                console.log(`{ Destination: '${flght[1][0]}', Status: '${flght[1][1]}' }`);
+        for (let number in flights) {
+            if (flights[number][1] == "Status: 'Cancelled'") {
+                console.log(`{ ${flights[number].join(', ')} }`);
             }
-        })
+        }
     } else {
-        Object.entries(flights).forEach(flght => {
-            if (flght[1][1] == 'Ready to fly')
-                console.log(`{ Destination: '${flght[1][0]}', Status: '${flght[1][1]}' }`);
-        })
+        for (let number in flights) {
+            if (flights[number][1] == "Status: 'Ready to fly'") {
+                console.log(`{ ${flights[number].join(', ')} }`);
+        }
     }
+}
 }
 
 
