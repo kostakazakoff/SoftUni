@@ -4,13 +4,13 @@ function schoolRegister(arr) {
     
     arr.map(studend => studend.split(', ')
         .map(studentInfo => studentInfo.split(': ')[1]))
-        .forEach(student => {
-            if (!nextGrade[student[1]]) {
-                nextGrade[student[1]] = {};
+        .forEach(array => {
+            if (!nextGrade[array[1]]) {
+                nextGrade[array[1]] = {};
             }
 
-            if (Number(student[2]) >= 3) {
-                nextGrade[student[1]][student[0]] = Number(student[2]);
+            if (Number(array[2]) >= 3) {
+                nextGrade[array[1]][array[0]] = Number(array[2]);
             }
         });
 
