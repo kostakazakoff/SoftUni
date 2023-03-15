@@ -6,8 +6,8 @@ function sequences(arrOfArrays) {
     .forEach(element => {
         result.add(JSON.stringify(element));
     });
-    result = Array.from(result);
-    result.forEach(el => {
+    Array.from(result)
+    .forEach(el => {
         el = JSON.parse(el);
         console.log(`[${el.join(', ')}]`);
     });
