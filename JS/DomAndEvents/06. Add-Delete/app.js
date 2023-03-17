@@ -8,5 +8,5 @@ function addItem() {
     newItem.appendChild(newAnchor);
     document.getElementById('items').appendChild(newItem);
     inputText.value = '';
-    newAnchor.addEventListener('click', () => newAnchor.parentElement.remove());
+    newAnchor.addEventListener('click', (e) => newAnchor.parentElement.remove());
 }
