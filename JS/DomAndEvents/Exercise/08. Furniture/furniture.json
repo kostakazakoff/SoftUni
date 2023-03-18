@@ -1,13 +1,13 @@
 [
     {
-        "img":"https://www.ikea.com/PIAimages/0447583_PE597395_S5.JPG",
+        "img":"https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868926_pe781434_s5.jpg?f=xs",
         "name": "Sofa",
         "price": "259",
         "decFactor":"0.4"
 
     },
     {
-        "img":"https://www.stylespafurniture.com/wp-content/uploads/2020/03/Cove_3_Door_Wardrobe_1.jpg",
+        "img":"https://furniture123.co.uk/Images/HMT006_1_Supersize.jpg?v=31",
         "name": "Wardrobe",
         "price": "120",
         "decFactor":"1.2"
