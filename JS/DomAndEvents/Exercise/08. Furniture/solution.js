@@ -12,8 +12,7 @@ function solve() {
     if (inputField) {
       let arrOfObjects = JSON.parse(inputField.value);
       Object.values(arrOfObjects).forEach(newProduct => {
-        console.log(newProduct['image'])
-
+        
         let newChild = `
         <tr>
             <td>
@@ -54,7 +53,7 @@ function solve() {
       totalDecFactor += Number(details[2].textContent);
       count++;
     });
-    
+
     let averageDecFactor = totalDecFactor / count;
     outputField.value = `Bought furniture: ${boughtProducts.join(', ')}\nTotal price: ${totalPrice.toFixed(2)}\nAverage decoration factor: ${averageDecFactor}`;
   }
