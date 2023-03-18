@@ -33,6 +33,7 @@ function solve() {
             </td>
         </tr>
         `;
+
         tableContent.innerHTML += newChild;
       });
     }
@@ -45,6 +46,7 @@ function solve() {
     let count = 0;
     const chkBoxes = Array.from(document.querySelectorAll('input[type="checkbox"]'))
       .filter(c => c.checked === true);
+
     chkBoxes.forEach(chkBox => {
       let details = Array.from(chkBox.parentElement.parentElement.children).slice(1, -1);
       boughtProducts.push(details[0].textContent.trim());
@@ -52,6 +54,7 @@ function solve() {
       totalDecFactor += Number(details[2].textContent);
       count++;
     });
+    
     let averageDecFactor = totalDecFactor / count;
     outputField.value = `Bought furniture: ${boughtProducts.join(', ')}\nTotal price: ${totalPrice.toFixed(2)}\nAverage decoration factor: ${averageDecFactor}`;
   }
