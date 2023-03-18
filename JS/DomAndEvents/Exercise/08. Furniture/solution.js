@@ -12,7 +12,6 @@ function solve() {
     if (inputField) {
       let arrOfObjects = JSON.parse(inputField.value);
       Object.values(arrOfObjects).forEach(newProduct => {
-        console.log(newProduct)
         
         let newChild = `
         <tr>
