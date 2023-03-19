@@ -8,32 +8,41 @@ function solve() {
   generateBtn.addEventListener('click', addProduct);
   buyBtn.addEventListener('click', buyProducts);
 
+  function createChildImg(obj, parentEl) {
+    newTd = document.createElement('td');
+    newImg = document.createElement('img');
+    newImg.src = obj['img'];
+    newTd.appendChild(newImg);
+    parentEl.appendChild(newTd);
+  }
+
+  function createChildP(obj, pContent, parentEl) {
+    newTd = document.createElement('td');
+    newP = document.createElement('p');
+    newP.textContent = obj[pContent]
+    newTd.appendChild(newP);
+    parentEl.appendChild(newTd);
+  }
+
+  function createChildChkBox(parentEl) {
+    newTd = document.createElement('td');
+    newChkBox = document.createElement('input');
+    newChkBox.setAttribute('type', 'checkbox');
+    newTd.appendChild(newChkBox);
+    parentEl.appendChild(newTd);
+  }
+
   function addProduct() {
     if (inputField) {
       let arrOfObjects = JSON.parse(inputField.value);
       Object.values(arrOfObjects).forEach(newProduct => {
-        
-        let newChild = `
-        <tr>
-            <td>
-                <img src="${newProduct['image']}">
-            </td>
-            <td>
-                <p>${newProduct['name']}</p>
-            </td>
-            <td>
-                <p>${newProduct['price']}</p>
-            </td>
-            <td>
-                <p>${newProduct['decFactor']}</p>
-            </td>
-            <td>
-                <input type="checkbox" />
-            </td>
-        </tr>
-        `;
-
-        tableContent.innerHTML += newChild;
+        const newTr = document.createElement('tr');
+        createChildImg(newProduct, newTr);
+        createChildP(newProduct, 'name', newTr);
+        createChildP(newProduct, 'price', newTr);
+        createChildP(newProduct, 'decFactor', newTr);
+        createChildChkBox(newTr);
+        tableContent.appendChild(newTr);
       });
     }
   }
