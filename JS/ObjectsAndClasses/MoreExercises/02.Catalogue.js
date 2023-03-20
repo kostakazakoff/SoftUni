@@ -22,6 +22,7 @@ function orderCatalogue(arr) {
     }
 }
 
+
 // orderCatalogue(
 //     [
 //         'Appricot : 20.4',
