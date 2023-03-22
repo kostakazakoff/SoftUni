@@ -3,14 +3,13 @@ function loadRepos() {
 	const outputUL = document.getElementById('repos');
 	const URL = `https://api.github.com/users/${inputUsername}/repos`
 
-	fetch (URL, {method: 'GET'})
-	.then((response) => checkError(response))
-	.then((response) => response.json())
-	.then((data) => parseData(data))
-	.catch((err) => {
-		outputUL.textContent = '';
-		createLi(err);
-	})
+	fetch(URL, { method: 'GET' })
+		.then((response) => checkError(response))
+		.then((response) => response.json())
+		.then((data) => parseData(data))
+		.catch((err) => {
+			outputUL.textContent = err;
+		})
 
 	function checkError(response) {
 		if (response.status >= 200 && response.status < 300) {
@@ -22,15 +21,11 @@ function loadRepos() {
 
 	function createLi(input) {
 		const li = document.createElement('li');
-			const a = document.createElement('a');
-			if (input === 'err'){
-				a.href = '#'
-			} else {
-				a.href = input;
-			}
-			a.textContent = input;
-			li.appendChild(a);
-			outputUL.appendChild(li);
+		const a = document.createElement('a');
+		a.href = input;
+		a.textContent = input;
+		li.appendChild(a);
+		outputUL.appendChild(li);
 	}
 
 	function parseData(data) {
