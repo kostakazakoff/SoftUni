@@ -7,3 +7,4 @@ _pycashe_
 *.docx
 *.doc
 screenshot.*
+node_modules
