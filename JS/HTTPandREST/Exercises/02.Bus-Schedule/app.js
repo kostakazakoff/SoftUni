@@ -4,12 +4,10 @@ function solve() {
     const info = document.getElementById('info');
     const URL = 'http://localhost:3030/jsonstore/bus/schedule/';
     let stopName;
-    let nextId = '1567';
+    let nextId = 'depot';
     let atWork = true;
 
     function depart() {
-        btnDepart.disabled = true;
-        btnArrive.disabled = false;
         fetch(`${URL}${nextId}`)
             .then((response) => response.json())
             .then((data) => {
@@ -22,13 +20,15 @@ function solve() {
                 info.textContent = 'Error'
                 atWork = false;
             })
+        btnDepart.disabled = true;
+        btnArrive.disabled = false;
     }
 
     async function arrive() {
         if (atWork) {
-            btnArrive.disabled = true;
-            btnDepart.disabled = false;
             info.textContent = `Arriving at ${stopName}`;
+            btnArrive.disabled = true;
+            btnDepart.disabled = false; 
         }
     }
 
