@@ -1,9 +1,6 @@
 values = tuple(map(float, input().split()))
 output = {}
 
-for n in values:
-    if n not in output:
-        output[n] = 0
-    output[n] += 1
+output = {n: values.count(n) for n in values}
 
 [print(key, f' - {value} times') for key, value in output.items()]
