@@ -5,6 +5,8 @@ alive_cells = []
 
 for (r, c) in BOMB_COORDINATES:
     power = matrix[r][c]
+    if power <= 0:
+        continue
     matrix[r][c] = 0
     for direction in ((-1, -1), (-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1)):
         row, col = r + direction[0], c + direction[1]
