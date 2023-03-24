@@ -45,11 +45,12 @@ function attachEvents() {
             headers: headers,
             body: JSON.stringify(obj)
         })
-            .then(loadPhoneBook)
+            .then(() => {
+                loadPhoneBook();
+                inputPerson.value = '';
+                inputPhone.value = '';
+            })
             .catch((err) => console.error(err));
-            
-        inputPerson.value = '';
-        inputPhone.value = '';
     }
 
     function deleteContact(id) {
