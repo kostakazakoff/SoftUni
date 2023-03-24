@@ -11,6 +11,13 @@ function attachEvents() {
     loadBtn.addEventListener('click', loadPhoneBook);
     createBtn.addEventListener('click', createContact);
 
+    function loadPhoneBook() {
+        fetch(BASE_URL)
+            .then((response) => response.json())
+            .then((data) => outputData(data))
+            .catch((err) => console.log(err))
+    }
+
     function outputData(data) {
         phonebookUL.textContent = '';
         Object.values(data).forEach(v => {
@@ -25,13 +32,6 @@ function attachEvents() {
             // fragment.appendChild(li);
         })
         // phonebookUL.appendChild(fragment);
-    }
-
-    function loadPhoneBook() {
-        fetch(BASE_URL)
-            .then((response) => response.json())
-            .then((data) => outputData(data))
-            .catch((err) => console.log(err))
     }
 
     function createContact() {
