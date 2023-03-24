@@ -8,3 +8,5 @@ _pycashe_
 *.doc
 screenshot.*
 node_modules
+*.zip
+*.rar
