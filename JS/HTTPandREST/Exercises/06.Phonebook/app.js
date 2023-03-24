@@ -38,13 +38,16 @@ function attachEvents() {
         const person = inputPerson.value;
         const phone = inputPhone.value;
         const obj = { 'person': person, 'phone': phone };
+        const headers = { 'Content-Type': 'application/json' }
+
         fetch(BASE_URL, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: headers,
             body: JSON.stringify(obj)
         })
-            .then(response => { loadPhoneBook() })
+            .then(loadPhoneBook)
             .catch((err) => console.error(err));
+            
         inputPerson.value = '';
         inputPhone.value = '';
     }
@@ -52,8 +55,7 @@ function attachEvents() {
     function deleteContact(id) {
         fetch(`${BASE_URL}${id}`, { method: 'DELETE' })
             .then(response => response.json())
-            .then(data => console.log(data))
-            .then(data => loadPhoneBook())
+            .then(loadPhoneBook)
             .catch((err) => console.error(err));
     }
 }
