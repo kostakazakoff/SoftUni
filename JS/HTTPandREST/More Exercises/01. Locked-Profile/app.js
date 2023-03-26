@@ -25,13 +25,13 @@ function lockedProfile() {
 				<input type="radio" name="${username}Locked" value="unlock"><br>
 				<hr>
 				<label>Username</label>
-				<input type="text" name="${username}Username" value="${username}" disabled readonly />
+				<input type="text" name="user1Username" value="${username}" disabled readonly />
 				<div id="${username}HiddenFields" class="hiddenInfo">
 					<hr>
 					<label>Email:</label>
-					<input type="email" name="${username}Email" value="${email}" disabled readonly />
+					<input type="email" name="user1Email" value="${email}" disabled readonly />
 					<label>Age:</label>
-					<input type="text" name="${username}Age" value="${age}" disabled readonly />
+					<input type="email" name="user1Age" value="${age}" disabled readonly />
 				</div>
 				
 				<button>Show more</button>
@@ -43,7 +43,7 @@ function lockedProfile() {
     }
 
     function handleShowHideBtn(username) {
-        const hiddenInfo = document.querySelector(`#${username}HiddenFields`);
+        const hiddenInfo = document.getElementById(`${username}HiddenFields`);
         const profileCard = hiddenInfo.parentElement;
         const lockBtn = profileCard.querySelector('input')
         const showHideBtn = profileCard.querySelector('button')
