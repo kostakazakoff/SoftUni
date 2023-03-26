@@ -7,6 +7,7 @@ function attachEvents() {
     const postComments = document.getElementById('post-comments');
     let caschedPosts = {};
     let caschedPostComments = {};
+    let firstLoad = false;
 
     const POSTS_URL = 'http://localhost:3030/jsonstore/blog/posts/'
     const POSTS_COMMENTS_URL = 'http://localhost:3030/jsonstore/blog/comments/'
@@ -15,13 +16,11 @@ function attachEvents() {
     btnViewPosts.addEventListener('click', () => handlePost())
 
     function loadPosts() {
-        postTitle.textContent = 'Post Details';
-        postBody.textContent = '';
-        postComments.textContent = '';
-        while (menu.firstChild) {menu.removeChild(menu.lastChild)};
+        firstLoad = true;
+        while (menu.firstChild) { menu.removeChild(menu.lastChild) };
         fetch(POSTS_URL)
             .then(res => res.json())
-            .then((posts) => {caschedPosts = posts; createMenu()})
+            .then((posts) => { caschedPosts = posts; createMenu() })
             .catch(err => console.error(err));
         fetch(`${POSTS_COMMENTS_URL}`)
             .then(res => res.json())
@@ -36,10 +35,10 @@ function attachEvents() {
             option.textContent = post.title
             menu.appendChild(option);
         })
+        if (firstLoad) { firstLoad = false; handlePost() }
     }
 
     function handlePost() {
-        console.log(caschedPosts);
         let id = menu.value
         postTitle.textContent = caschedPosts[id]['title'];
         postBody.textContent = caschedPosts[id]['body'];
@@ -48,7 +47,7 @@ function attachEvents() {
         Object.values(caschedPostComments).forEach(post => {
             if (post.postId === id) {
                 let li = document.createElement('li');
-                li.id = id;
+                li.id = post.id;
                 li.textContent = post['text'];
                 postComments.appendChild(li)
             }
