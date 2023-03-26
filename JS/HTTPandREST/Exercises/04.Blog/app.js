@@ -15,6 +15,9 @@ function attachEvents() {
     btnViewPosts.addEventListener('click', () => handlePost())
 
     function loadPosts() {
+        postTitle.textContent = 'Post Details';
+        postBody.textContent = '';
+        postComments.textContent = '';
         while (menu.firstChild) {menu.removeChild(menu.lastChild)};
         fetch(POSTS_URL)
             .then(res => res.json())
