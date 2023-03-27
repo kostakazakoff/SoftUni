@@ -1,7 +1,7 @@
 function solve() {
     const btnDepart = document.getElementById('depart');
     const btnArrive = document.getElementById('arrive');
-    const info = document.getElementById('info');
+    const info = document.querySelector('.info');
     const URL = 'http://localhost:3030/jsonstore/bus/schedule/';
     let stopName;
     let nextId = 'depot';
@@ -11,9 +11,9 @@ function solve() {
         btnArrive.disabled = false;
         fetch(`${URL}${nextId}`)
             .then((response) => response.json())
-            .then((info) => {
-                stopName = info.name;
-                nextId = info.next;
+            .then((data) => {
+                stopName = data.name;
+                nextId = data.next;
                 info.textContent = `Next stop ${stopName}`;
             })
             .catch(() => {
