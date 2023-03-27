@@ -48,7 +48,7 @@ function attachEvents() {
         let id = menu.value
         postTitle.textContent = caschedPosts[id]['title'];
         postBody.textContent = caschedPosts[id]['body'];
-        postComments.textContent = '';
+        postComments.innerHTML = '';
 
         Object.values(caschedPostComments).forEach(post => {
             if (post.postId === id) {
