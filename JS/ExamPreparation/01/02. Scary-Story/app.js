@@ -10,8 +10,8 @@ function solve() {
   const publishedStoryUl = document.getElementById('preview-list');
 
   function publishStory() {
-    const genre = document.querySelector('option:checked').innerText;
-    
+    const genre = document.querySelector('option:checked').textContent;
+
     const li = document.createElement('li');
     li.className = 'story-info';
 
@@ -49,7 +49,7 @@ function solve() {
     const pubTitle = document.querySelector('article :nth-child(3)');
     const pubStory = document.querySelector('article :nth-child(5)');
 
-    [fName.value, lName.value] = pubFullName.innerText.split(' ').slice(1);
+    [fName.value, lName.value] = pubFullName.textContent.split(' ').slice(1);
     age.value = pubAge.textContent.split(' ')[1];
     title.value = pubTitle.textContent.split(' ')[1];
     storyText.value = pubStory.textContent;
@@ -67,7 +67,7 @@ function solve() {
   })
 
   function cleanPublishList() {
-    publishedStoryUl.innerHTML = '<h3>Preview</h3>'
+    publishedStoryUl.innerHTML = '<h3>Preview</h3>';
     publishBtn.disabled = false;
   }
 }
