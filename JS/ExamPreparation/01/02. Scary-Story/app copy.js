@@ -11,25 +11,21 @@ function solve() {
 
   function publishStory() {
     const genre = document.querySelector('option:checked').innerText;
-    
     const li = document.createElement('li');
     li.className = 'story-info';
-
     li.innerHTML = `
     <article>
-    <h4>Name: ${fName.value} ${lName.value}</h4>
-    <p>Age: ${age.value}</p>
-    <p>Title: ${title.value}</p>
-    <p>Genre: ${genre}</p>
-    <p>${storyText.value}</p>
+    <h4 id="pub-fullname">Name: ${fName.value} ${lName.value}</h4>
+    <p id="pub-age">Age: ${age.value}</p>
+    <p id="pub-title">Title: ${title.value}</p>
+    <p id="pub-genre">Genre: ${genre}</p>
+    <p id="pub-story">${storyText.value}</p>
     </article>
     <button class="save-btn">Save Story</button>
     <button class="edit-btn">Edit Story</button>
     <button class="delete-btn">Delete Story</button>
     `;
-
     publishedStoryUl.appendChild(li);
-
     const saveBtn = document.querySelector('.save-btn');
     const editBtn = document.querySelector('.edit-btn');
     const deleteBtn = document.querySelector('.delete-btn');
@@ -44,11 +40,11 @@ function solve() {
   }
 
   function editStory() {
-    const pubFullName = document.querySelector('article :nth-child(1)');
-    const pubAge = document.querySelector('article :nth-child(2)');
-    const pubTitle = document.querySelector('article :nth-child(3)');
-    const pubStory = document.querySelector('article :nth-child(5)');
-
+    const pubFullName = document.getElementById('pub-fullname');
+    const pubAge = document.getElementById('pub-age');
+    const pubTitle = document.getElementById('pub-title');
+    const pubStory = document.getElementById('pub-story');
+    
     [fName.value, lName.value] = pubFullName.innerText.split(' ').slice(1);
     age.value = pubAge.textContent.split(' ')[1];
     title.value = pubTitle.textContent.split(' ')[1];
