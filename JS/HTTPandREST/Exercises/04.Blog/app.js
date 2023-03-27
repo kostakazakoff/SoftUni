@@ -18,14 +18,19 @@ function attachEvents() {
     function loadPosts() {
         firstLoad = true;
         while (menu.firstChild) { menu.removeChild(menu.lastChild) };
+
+        fetch(`${POSTS_COMMENTS_URL}`)
+            .then(res => res.json())
+            .then(data => caschedPostComments = data)
+            .then(getPosts)
+            .catch(err => console.log(err));
+    }
+
+    function getPosts() {
         fetch(POSTS_URL)
             .then(res => res.json())
             .then((posts) => { caschedPosts = posts; createMenu() })
             .catch(err => console.error(err));
-        fetch(`${POSTS_COMMENTS_URL}`)
-            .then(res => res.json())
-            .then(data => caschedPostComments = data)
-            .catch(err => console.log(err));
     }
 
     function createMenu() {
@@ -34,11 +39,12 @@ function attachEvents() {
             option.value = post.id
             option.textContent = post.title
             menu.appendChild(option);
-        })
-        if (firstLoad) { firstLoad = false; handlePost() }
+        });
+        if (firstLoad) { handlePost() }
     }
 
     function handlePost() {
+        firstLoad = false;
         let id = menu.value
         postTitle.textContent = caschedPosts[id]['title'];
         postBody.textContent = caschedPosts[id]['body'];
