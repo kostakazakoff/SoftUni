@@ -38,9 +38,9 @@ function solve() {
 
     publishBtn.disabled = true;
 
-    editBtn.addEventListener('click', () => editStory());
-    saveBtn.addEventListener('click', () => saveStory());
-    deleteBtn.addEventListener('click', () => cleanPublishList());
+    editBtn.addEventListener('click', editStory);
+    saveBtn.addEventListener('click', saveStory);
+    deleteBtn.addEventListener('click', cleanPublishList);
   }
 
   function editStory() {
@@ -69,7 +69,7 @@ function solve() {
   })
 
   function cleanPublishList() {
-    publishedStoryUl.remove(this.parentNode);
+    publishedStoryUl.innerHTML = '<h3>Preview</h3>'
     publishBtn.disabled = false;
   }
 }
