@@ -5,9 +5,8 @@ function attachEvents() {
     const todoList = document.getElementById('todo-list');
     const BASE_URL = 'http://localhost:3030/jsonstore/tasks/'
 
-    addBtn.addEventListener('click', () => addTask())
-
-    loadTasks()
+    addBtn.addEventListener('click', () => addNewTask());
+    loadBtn.addEventListener('click',() => loadTasks());
 
     function loadTasks() {
         fetch(BASE_URL)
@@ -16,11 +15,11 @@ function attachEvents() {
             .catch(err => console.log(err));
     }
 
-    function outputTasks(data) {
+    function outputTasks(tasks) {
         inputField.value = '';
         todoList.innerHTML = '';
 
-        Object.values(data).forEach(task => {
+        Object.values(tasks).forEach(task => {
             const li = document.createElement('li');
             const span = document.createElement('span');
             const removeBtn = document.createElement('button');
@@ -38,13 +37,12 @@ function attachEvents() {
         })
     }
 
-    function addTask() {
-        const title = inputField.value;
-        const headers = { 'Content-Type': 'application/json' };
+    function addNewTask(event) {
+        event.preventDefault();
         fetch(BASE_URL, {
             method: 'POST',
-            headers: headers,
-            body: JSON.stringify({ 'name': title })
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 'name': inputField.value })
         })
             .then(() => loadTasks())
             .catch(err => console.log(err));

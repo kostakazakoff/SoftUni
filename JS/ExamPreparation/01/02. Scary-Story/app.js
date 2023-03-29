@@ -6,11 +6,11 @@ function solve() {
   const age = document.getElementById('age');
   const title = document.getElementById('story-title');
   const storyText = document.getElementById('story');
+  const genre = document.getElementById('genre');
   const publishBtn = document.getElementById('form-btn');
   const publishedStoryUl = document.getElementById('preview-list');
 
   function publishStory() {
-    const genre = document.querySelector('option:checked').textContent;
 
     const li = document.createElement('li');
     li.className = 'story-info';
@@ -20,7 +20,7 @@ function solve() {
     <h4>Name: ${fName.value} ${lName.value}</h4>
     <p>Age: ${age.value}</p>
     <p>Title: ${title.value}</p>
-    <p>Genre: ${genre}</p>
+    <p>Genre: ${genre.value}</p>
     <p>${storyText.value}</p>
     </article>
     <button class="save-btn">Save Story</button>
@@ -47,12 +47,14 @@ function solve() {
     const pubFullName = document.querySelector('article :nth-child(1)');
     const pubAge = document.querySelector('article :nth-child(2)');
     const pubTitle = document.querySelector('article :nth-child(3)');
+    const pubGenre = document.querySelector('article :nth-child(4)');
     const pubStory = document.querySelector('article :nth-child(5)');
 
     [fName.value, lName.value] = pubFullName.textContent.split(' ').slice(1);
     age.value = pubAge.textContent.split(' ')[1];
     title.value = pubTitle.textContent.split(' ')[1];
     storyText.value = pubStory.textContent;
+    genre.value = pubGenre.textContent.split(' ')[1];
 
     cleanPublishList()
   }
