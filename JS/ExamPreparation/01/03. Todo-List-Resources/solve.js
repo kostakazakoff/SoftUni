@@ -5,10 +5,12 @@ function attachEvents() {
     const todoList = document.getElementById('todo-list');
     const BASE_URL = 'http://localhost:3030/jsonstore/tasks/'
 
-    addBtn.addEventListener('click', () => addNewTask());
-    loadBtn.addEventListener('click',() => loadTasks());
+    addBtn.addEventListener('click', addNewTask);
+    loadBtn.addEventListener('click', loadTasks);
 
-    function loadTasks() {
+    function loadTasks(event) {
+        event?.preventDefault()
+
         fetch(BASE_URL)
             .then(response => response.json())
             .then(data => outputTasks(data))
@@ -29,8 +31,8 @@ function attachEvents() {
             span.textContent = `${task.name}`;
             removeBtn.textContent = 'Remove';
             editBtn.textContent = 'Edit';
-            removeBtn.addEventListener('click', () => removeTask(task._id));
-            editBtn.addEventListener('click', () => editTask(task._id));
+            removeBtn.addEventListener('click', removeTask);
+            editBtn.addEventListener('click', editTask);
 
             [span, removeBtn, editBtn].forEach(el => li.appendChild(el));
             todoList.appendChild(li);
@@ -38,7 +40,7 @@ function attachEvents() {
     }
 
     function addNewTask(event) {
-        event.preventDefault();
+        event?.preventDefault();
         fetch(BASE_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -48,14 +50,38 @@ function attachEvents() {
             .catch(err => console.log(err));
     }
 
-    function removeTask(id) {
+    function removeTask(e) {
+        const id = e.target.parentElement.id;
         fetch(`${BASE_URL}${id}`, { method: 'DELETE' })
             .then(() => loadTasks())
             .catch(err => console.log(err));
     }
 
-    function editTask(id) {
-        console.log('Edit');
+    function editTask(event) {
+        const id = event.target.parentElement.id;
+        const task = event.currentTarget.parentElement;
+        const [span, removeBtn, editBtn] = Array.from(task.children);
+
+        const formInput = document.createElement('input');
+        formInput.value = span.textContent;
+
+        const submitBtn = document.createElement('button');
+        submitBtn.textContent = 'Submit';
+
+        task.innerHTML = '';
+        task.appendChild(formInput);
+        task.appendChild(removeBtn);
+        task.appendChild(submitBtn);
+
+        submitBtn.addEventListener('click', () => {
+            const httpHeaders = {
+                method: 'PATCH',
+                body: JSON.stringify({ name: formInput.value })
+            }
+            fetch(`${BASE_URL}${id}`, httpHeaders)
+                .then(() => loadTasks())
+                .catch(err => console.log(err));
+        });
     }
 }
 
