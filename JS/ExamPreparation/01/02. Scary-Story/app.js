@@ -69,7 +69,7 @@ function solve() {
   })
 
   function cleanPublishList() {
-    publishedStoryUl.innerHTML = '<h3>Preview</h3>';
+    publishedStoryUl.remove(this.parentNode);
     publishBtn.disabled = false;
   }
 }
