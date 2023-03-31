@@ -11,21 +11,22 @@ function solve() {
     const savedContainer = document.querySelector('.saved-container');
     const totalLikesField = document.querySelector('.likes > p');
     let likes = 0;
-    let caschedSongs = {};
 
     addBtn.addEventListener('click', addSong);
 
     function addSong(e) {
         e.preventDefault();
+        
         const validInput = [genreInput, nameInput, authorInput, dateInput].every(field => field.value.length > 0);
         if (!validInput) { return };
 
         const div = createHTMLElement('div', allHitsContainer, null, ['hits-info']);
-        const img = createHTMLElement('img', div, null, null, null, { src: imgSource });
-        const genre = createHTMLElement('h2', div, `Genre: ${genreInput.value}`);
-        const name = createHTMLElement('h2', div, `Name: ${nameInput.value}`);
-        const author = createHTMLElement('h2', div, `Author: ${authorInput.value}`);
-        const date = createHTMLElement('h2', div, `Date: ${dateInput.value}`);
+        createHTMLElement('img', div, null, null, null, { src: imgSource });
+        createHTMLElement('h2', div, `Genre: ${genreInput.value}`);
+        createHTMLElement('h2', div, `Name: ${nameInput.value}`);
+        createHTMLElement('h2', div, `Author: ${authorInput.value}`);
+        createHTMLElement('h3', div, `Date: ${dateInput.value}`);
+
         const saveBtn = createHTMLElement('button', div, 'Save song', ['save-btn']);
         const likeBtn = createHTMLElement('button', div, 'Like song', ['like-btn']);
         const deleteBtn = createHTMLElement('button', div, 'Delete', ['delete-btn']);
@@ -34,7 +35,7 @@ function solve() {
             field.value = '';
         });
 
-        saveBtn.addEventListener('click',(e) => saveSong(div));
+        saveBtn.addEventListener('click', saveSong);
         likeBtn.addEventListener('click', incrementLikes);
         deleteBtn.addEventListener('click', deleteSong);
     }
@@ -42,15 +43,20 @@ function solve() {
     function incrementLikes() {
         likes++;
         totalLikesField.textContent = `Total Likes: ${likes}`
-        e.target.disabled = true;
+        this.disabled = true;
     }
 
-    function saveSong(div) {
-        
+    function saveSong() {
+        const parent = this.parentNode;
+        saveBtn = parent.querySelector('.save-btn');
+        likeBtn = parent.querySelector('.like-btn');
+        saveBtn.remove();
+        likeBtn.remove();
+        savedContainer.appendChild(parent);
     }
 
     function deleteSong() {
-
+        this.parentNode.remove();
     }
 
     function createHTMLElement(type, parentNode, content, classes, id, attributes, useInnerHtml) {
