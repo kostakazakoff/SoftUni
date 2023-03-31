@@ -31,9 +31,7 @@ function solve() {
         const likeBtn = createHTMLElement('button', div, 'Like song', ['like-btn']);
         const deleteBtn = createHTMLElement('button', div, 'Delete', ['delete-btn']);
 
-        [genreInput, nameInput, authorInput, dateInput].forEach(field => {
-            field.value = '';
-        });
+        document.querySelector('form').reset();
 
         saveBtn.addEventListener('click', saveSong);
         likeBtn.addEventListener('click', incrementLikes);
