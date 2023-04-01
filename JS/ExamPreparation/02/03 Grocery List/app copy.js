@@ -1,6 +1,6 @@
 function grocery() {
     let productToUpdateId = null;
-    const productsTableTbody = document.getElementById('tbody');
+    const productsTable = document.querySelector('table');
     const BASE_URL = 'http://localhost:3030/jsonstore/grocery/'
     const productInputFields = {
         'product': document.getElementById('product'),
@@ -21,17 +21,22 @@ function grocery() {
     function loadAllProducts(e) {
         e?.preventDefault();
 
+        productInputBtns.addProductBtn.disabled = false;
+        productInputBtns.updateProductBtn.disabled = true;
+
+        inputForm.reset();
         fetch(BASE_URL)
             .then(res => res.json())
-            .then(data => addProductsToTable(data))
+            .then(data => addProductToTable(data))
             .catch(err => console.error(err));
     }
 
-    function addProductsToTable(allP) {
-        productsTableTbody.innerHTML = '';
-
+    function addProductToTable(allP) {
+        document.querySelector('tbody')?.remove();
+        const tBody = createHTMLElement('tbody', productsTable);
+        
         Object.values(allP).forEach(p => {
-            const tr = createHTMLElement('tr', productsTableTbody, null, null, p._id);
+            const tr = createHTMLElement('tr', tBody, null, null, p._id);
             createHTMLElement('td', tr, p.product, ['name']);
             createHTMLElement('td', tr, p.count, ['count-product']);
             createHTMLElement('td', tr, p.price, ['product-price']);
@@ -61,7 +66,7 @@ function grocery() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newProduct)
         })
-            .then(() => { inputForm.reset(); loadAllProducts() })
+            .then(() => loadAllProducts())
             .catch(err => console.log(err));
     }
 
@@ -69,7 +74,7 @@ function grocery() {
         e?.preventDefault();
 
         const [product, count, price] = Object.values(productInputFields).map(tag => tag.value)
-
+        
         const editedProduct = { product, count, price };
 
         fetch(`${BASE_URL}${productToUpdateId}`, {
@@ -77,13 +82,8 @@ function grocery() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(editedProduct)
         })
-            .then(() => {
-                inputForm.reset();
-                productInputBtns.addProductBtn.disabled = false;
-                productInputBtns.updateProductBtn.disabled = true;
-                loadAllProducts()
-            })
-            .catch(err => console.error(err));
+        .then(() => loadAllProducts())
+        .catch(err => console.error(err));
     }
 
     function prepareProductToUpdate() {
