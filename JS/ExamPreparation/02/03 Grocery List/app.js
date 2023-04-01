@@ -1,5 +1,6 @@
 function grocery() {
     let productToUpdateId = null;
+    const inputForm = document.querySelector('.list');
     const productsTableTbody = document.getElementById('tbody');
     const BASE_URL = 'http://localhost:3030/jsonstore/grocery/'
     const productInputFields = {
@@ -12,7 +13,6 @@ function grocery() {
         'updateProductBtn': document.getElementById('update-product'),
         'loadAllProductsBtn': document.getElementById('load-product')
     }
-    const inputForm = document.querySelector('.list')
 
     productInputBtns.loadAllProductsBtn.addEventListener('click', loadAllProducts);
     productInputBtns.addProductBtn.addEventListener('click', addProduct);
@@ -46,15 +46,9 @@ function grocery() {
 
     function addProduct(e) {
         e?.preventDefault();
-        const name = productInputFields.product.value;
-        const count = productInputFields.count.value;
-        const price = productInputFields.price.value;
 
-        const newProduct = {
-            'product': name,
-            'count': count,
-            'price': price,
-        }
+        const [product, count, price] = Object.values(productInputFields).map(tag => tag.value)
+        const newProduct = { product, count, price }
 
         fetch(BASE_URL, {
             method: 'POST',
@@ -62,14 +56,13 @@ function grocery() {
             body: JSON.stringify(newProduct)
         })
             .then(() => { inputForm.reset(); loadAllProducts() })
-            .catch(err => console.log(err));
+            .catch(err => console.error(err));
     }
 
     function updateProduct(e) {
         e?.preventDefault();
 
         const [product, count, price] = Object.values(productInputFields).map(tag => tag.value)
-
         const editedProduct = { product, count, price };
 
         fetch(`${BASE_URL}${productToUpdateId}`, {
