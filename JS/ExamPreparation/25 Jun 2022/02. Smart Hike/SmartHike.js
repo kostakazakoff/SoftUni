@@ -44,11 +44,11 @@ class SmartHike {
             return `${this.username} has not done any hiking yet`;
         }
         if (criteria !== 'all') {
-            const minTime = this.listOfHikes
+            const minTimeHike = this.listOfHikes
                 .filter(h => h.difficultyLevel === criteria)
                 .sort((a, b) => a.time - b.time)[0];
-            if (!minTime) { return `${this.username} has not done any ${criteria} hiking yet` }
-            return `${this.username}'s best ${criteria} hike is ${minTime.peak} peak, for ${minTime.time} hours`
+            if (!minTimeHike) { return `${this.username} has not done any ${criteria} hiking yet` }
+            return `${this.username}'s best ${criteria} hike is ${minTimeHike.peak} peak, for ${minTimeHike.time} hours`
         }
         let output = ['All hiking records:'];
         this.listOfHikes.forEach(h => output.push(`${this.username} hiked ${h.peak} for ${h.time} hours`));
