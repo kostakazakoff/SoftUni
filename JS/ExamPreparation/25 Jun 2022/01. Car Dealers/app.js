@@ -5,17 +5,16 @@ function solve() {
   const publishTableBody = document.getElementById('table-body');
   const totalProfitField = document.getElementById('profit');
   const carsList = document.getElementById('cars-list');
-  const inputDOMSelectors = {
-    make: document.getElementById('make'),
-    model: document.getElementById('model'),
-    year: document.getElementById('year'),
-    fuel: document.getElementById('fuel'),
-    price: document.getElementById('original-cost'),
-    sellPrice: document.getElementById('selling-price')
-  };
+
+  const make = document.getElementById('make');
+  const model = document.getElementById('model');
+  const year = document.getElementById('year');
+  const fuel = document.getElementById('fuel');
+  const price = document.getElementById('original-cost');
+  const sellPrice = document.getElementById('selling-price');
+
   const publishBtn = document.getElementById('publish');
 
-  let casch = {};
   let totalProfit = 0;
 
   publishBtn.addEventListener('click', publish);
@@ -23,30 +22,20 @@ function solve() {
   function publish(e) {
     e.preventDefault();
 
-    const validSellPrice = parseFloat(inputDOMSelectors.sellPrice.value) >= parseFloat(inputDOMSelectors.price.value);
-    const validInput = Object.values(inputDOMSelectors).every(f => f.value.trim().length > 0);
+    const validSellPrice = parseInt(sellPrice.value) > parseInt(price.value);
+    const validInput = [make, model, year, fuel, price, sellPrice].every(field => field.value.length > 0);
 
     if (!validInput || !validSellPrice) {
       return;
     }
 
-    const { make, model, year, fuel, price, sellPrice } = inputDOMSelectors;
-    casch[inputDOMSelectors.make.value] = {
-      make: make.value,
-      model: model.value,
-      year: year.value,
-      fuel: fuel.value,
-      price: price.value,
-      sellPrice: sellPrice.value
-    }
-
     const tr = createHTMLElement('tr', publishTableBody, null, ['row']);
-    createHTMLElement('td', tr, inputDOMSelectors.make.value);
-    createHTMLElement('td', tr, inputDOMSelectors.model.value);
-    createHTMLElement('td', tr, inputDOMSelectors.year.value);
-    createHTMLElement('td', tr, inputDOMSelectors.fuel.value);
-    createHTMLElement('td', tr, inputDOMSelectors.price.value);
-    createHTMLElement('td', tr, inputDOMSelectors.sellPrice.value);
+    createHTMLElement('td', tr, make.value);
+    createHTMLElement('td', tr, model.value);
+    createHTMLElement('td', tr, year.value);
+    createHTMLElement('td', tr, fuel.value);
+    createHTMLElement('td', tr, price.value);
+    createHTMLElement('td', tr, sellPrice.value);
     const td = createHTMLElement('td', tr);
     const editBtn = createHTMLElement('button', td, 'Edit', ['action-btn', 'edit']);
     const sellBtn = createHTMLElement('button', td, 'Sell', ['action-btn', 'sell']);
@@ -58,26 +47,29 @@ function solve() {
   }
 
   function edit() {
-    const car = this.parentNode.parentNode.querySelector('td:nth-child(1)').textContent;
-    for (const key in casch[car]) {
-      inputDOMSelectors[key].value = casch[car][key];
-    }
+    make.value = this.parentNode.parentNode.querySelector('td:nth-child(1)').textContent;
+    model.value = this.parentNode.parentNode.querySelector('td:nth-child(2)').textContent;
+    year.value = this.parentNode.parentNode.querySelector('td:nth-child(3)').textContent;
+    fuel.value = this.parentNode.parentNode.querySelector('td:nth-child(4)').textContent;
+    price.value = this.parentNode.parentNode.querySelector('td:nth-child(5)').textContent;
+    sellPrice.value = this.parentNode.parentNode.querySelector('td:nth-child(6)').textContent;
+
+
     this.parentNode.parentNode.remove();
   }
 
   function sell() {
-    const car = this.parentNode.parentNode.querySelector('td:nth-child(1)').textContent;
-
-    const make = casch[car].make;
-    const model = casch[car].model;
-    const year = casch[car].year;
-    const price = casch[car].price;
-    const sellPrice = casch[car].sellPrice;
-    const profit = sellPrice - price;
+    const _make = this.parentNode.parentNode.querySelector('td:nth-child(1)').textContent;
+    const _model = this.parentNode.parentNode.querySelector('td:nth-child(2)').textContent;
+    const _year = this.parentNode.parentNode.querySelector('td:nth-child(3)').textContent;
+    const _price = parseInt(this.parentNode.parentNode.querySelector('td:nth-child(5)').textContent);
+    const _sellPrice = parseInt(this.parentNode.parentNode.querySelector('td:nth-child(6)').textContent);
+    
+    const profit = _sellPrice - _price;
 
     const li = createHTMLElement('li', carsList, null, ['each-list']);
-    createHTMLElement('span', li, `${make} ${model}`);
-    createHTMLElement('span', li, year);
+    createHTMLElement('span', li, `${_make} ${_model}`);
+    createHTMLElement('span', li, _year);
     createHTMLElement('span', li, profit);
 
     totalProfit += profit;
