@@ -27,10 +27,10 @@ function grocery() {
             .catch(err => console.error(err));
     }
 
-    function addProductsToTable(allP) {
+    function addProductsToTable(allProducts) {
         productsTableTbody.innerHTML = '';
 
-        Object.values(allP).forEach(p => {
+        Object.values(allProducts).forEach(p => {
             const tr = createHTMLElement('tr', productsTableTbody, null, null, p._id);
             createHTMLElement('td', tr, p.product, ['name']);
             createHTMLElement('td', tr, p.count, ['count-product']);
