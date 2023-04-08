@@ -62,7 +62,7 @@ function grocery() {
     function updateProduct(e) {
         e?.preventDefault();
 
-        const [product, count, price] = Object.values(productInputFields).map(tag => tag.value)
+        const [product, count, price] = Object.values(productInputFields).map(field => field.value)
         const editedProduct = { product, count, price };
 
         fetch(`${BASE_URL}${productToUpdateId}`, {
