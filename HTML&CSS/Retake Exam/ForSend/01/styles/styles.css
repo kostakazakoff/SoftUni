@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap");
+
+body {
+    font-family: "Inter";
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+img {
+    position: absolute;
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 80px;
+}
+
+article {
+    background-color: white;
+    padding: 32px;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+h2 {
+    font-weight: 700;
+}
+
+.article-bill-info {
+    font-size: 0.8rem;
+    color: gray;
+}
+
+.article-price {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.meta {
+    padding-left: 0;
+}
+
+.fa-check {
+    color: gray;
+}
+
+article:hover {
+    height: 90%;
+}
+
+.primary-btn {
+    align-self: flex-start;
+    background-color: #333333;
+    color: white;
+    padding: 8px 24px;
+    border-radius: 4px;
+}

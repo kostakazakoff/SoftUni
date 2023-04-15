@@ -1,0 +1,38 @@
+@media (max-width: 600px) {
+    .home-tab-selector-cards-container {
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+    }
+
+    .navigation-nav {
+        display: none;
+    }
+
+    .home-image {
+        display: none;
+    }
+
+    .home-top-part {
+        flex-direction: column;
+    }
+
+    .home-links-container {
+        flex-direction: column;
+        gap: 24px;
+        width: 100%;
+    }
+
+    .home-contact-container {
+        width: 100%;
+    }
+
+    .home-subscribe-container {
+        width: 100%;
+    }
+
+    .section-container {
+        padding-top: 48px;
+        padding-bottom: 48px;
+    }
+}
+    

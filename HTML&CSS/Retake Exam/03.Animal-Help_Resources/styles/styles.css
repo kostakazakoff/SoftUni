@@ -1,0 +1,233 @@
+body {
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+.btn {
+    padding: 12px 80px;
+    border-radius: 8px;
+    font-size: 24px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+p {
+    font-size: 22px;
+}
+
+.btn-primary {
+    background-color: black;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #FFFFFF;
+    color: black;
+}
+
+nav {
+    padding: 12px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: white;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+nav ul {
+    display: flex;
+    gap: 24px;
+}
+
+nav li {
+    cursor: pointer;
+    font-size: 32px;
+}
+
+section {
+    display: flex;
+}
+
+#hero {
+    background-color: #77DBFC;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 600px;
+}
+
+#hero .left {
+    display: flex;
+    padding: 40px 80px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+#hero .buttons {
+    display: flex;
+    gap: 24px;
+}
+
+#hero p {
+    font-size: 24px;
+}
+
+#weare {
+    padding: 48px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+}
+
+#weare .txt {
+    width: 50%;
+    text-align: center;
+    font-weight: bold;
+}
+
+#weare p {
+    padding: 20px 0;
+}
+
+#weare .flex-row {
+    display: flex;
+    gap: 60px;
+}
+
+#wework {
+    background-color: #77DBFC;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px;
+    height: 700px;
+    gap: 24px;
+}
+
+#wework ul {
+    padding-left: 0;
+    height: 60%;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#wework li {
+    width: 40%;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+#animals {
+    padding: 40px 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#animals .flex-row {
+    padding: 20px 20px;
+    width: 100%;
+    display: flex;
+    gap:  40px;
+}
+
+#howwework {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 20px 60px;
+}
+
+#howwework .flex-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+#howwework article {
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#howwework h3 {
+    background-color: #77DBFC;
+    padding: 40px;
+    font-size: 32px;
+}
+
+#howwework p {
+    padding: 40px;
+    font-weight: bold;
+}
+
+#contact {
+    padding: 40px 0;
+    flex-direction: row;
+}
+
+#contact img {
+    width: 50%;
+}
+
+#contact .flex-col {
+    display: flex;
+    flex-direction: column;
+    padding: 60px;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+#contact input {
+    all: unset;
+    font-size: 24px;
+    padding: 12px;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+}
+
+footer {
+    display: flex;
+    gap: 20px;
+    padding: 20px
+}
+
+footer p {
+    margin-left: auto;
+}
+
+footer i {
+    font-size: 32px;
+}
+
+.fa-house, .fa-helicopter, .fa-pencil {
+    font-size: 150px;
+    color: #77DBFC;
+    padding: 0 20px 20px 20px;
+}
