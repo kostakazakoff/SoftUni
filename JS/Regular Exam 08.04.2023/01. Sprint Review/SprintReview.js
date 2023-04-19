@@ -10,7 +10,6 @@ function sprintReview(arr) {
         if (!assigneesList.hasOwnProperty(assignee)) {
             assigneesList[assignee] = [];
         }
-        
         assigneesList[assignee].push({ taskId, title, status, estimatedPoints });
     });
 
@@ -21,8 +20,8 @@ function sprintReview(arr) {
     }
 
     allCommands.forEach(commandLine => {
-        const [command, ...attrs] = commandLine.split(':');
-        execute[command](attrs);
+        const [command, ...args] = commandLine.split(':');
+        execute[command](args);
     });
 
     function addNew(task) {
@@ -31,7 +30,7 @@ function sprintReview(arr) {
             console.log(`Assignee ${assignee} does not exist on the board!`);
             return;
         }
-        assigneesList[assignee].push({ taskId, title, status, estimatedPoints });
+        assigneesList[assignee].push({ assignee, taskId, title, status, estimatedPoints });
     }
 
     function changeStatus(args) {
@@ -52,6 +51,7 @@ function sprintReview(arr) {
     function removeTask(args) {
         const [assignee, index] = args;
         const indexNum = parseInt(index);
+        
         if (!assigneesList.hasOwnProperty(assignee)) {
             console.log(`Assignee ${assignee} does not exist on the board!`);
             return;
@@ -59,6 +59,7 @@ function sprintReview(arr) {
 
         if (assigneesList[assignee].length <= indexNum) {
             console.log(`Index is out of range!`);
+            return;
         }
         assigneesList[assignee].splice(index, 1);
     }
