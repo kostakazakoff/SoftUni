@@ -1,0 +1,1 @@
+docker run -p 5432:5432 -e POSTGRES_USER=kazakoff -e POSTGRES_PASSWORD=Alabala123 -d -v my-postgres-data:/var/lib/postgresql/data --name postgres_test postgres:latest
