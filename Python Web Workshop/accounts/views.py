@@ -1,16 +1,16 @@
 from django.shortcuts import render
 
 def register_profile(request):
-    pass
+    return render(request, 'accounts/register-page.html')
 
 def login_profile(request):
-    pass
+    return render(request, 'accounts/login-page.html')
 
-def delete_profile(request):
-    pass
+def delete_profile(request, pk):
+    return render(request, 'accounts/profile-delete-page.html', {'pk': pk})
 
-def details_profile(request):
-    pass
+def details_profile(request, pk):
+    return render(request, 'accounts/profile-details-page.html', {'pk': pk})
 
-def edit_profile(request):
-    pass
+def edit_profile(request, pk):
+    return render(request, 'accounts/profile-edit-page.html', {'pk': pk})
