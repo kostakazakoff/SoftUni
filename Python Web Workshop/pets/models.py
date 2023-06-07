@@ -1,13 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
 
-'''
-Name - it should consist of a maximum of 30 characters.
-• Personal Pet Photo - the user can link a picture using a URL
-The field date of birth is optional:
-• Date of Birth - pet's day, month, and year of birth
-Slug - a slug automatically generated using the pet's name and the pet's id, separated by a "-" (dash).
-'''
 
 class Pet(models.Model):
     name = models.CharField(
@@ -20,7 +13,16 @@ class Pet(models.Model):
     )
     slug = models.SlugField(
         unique=True,
+        editable=False,
+        blank=True,
     )
+
+    def __str__(self):
+        return self.slug
+
+    @property
+    def photos_count(self):
+        return self.photos.count()
 
     # Auto generate slug
     def save(self, *args, **kwargs):
