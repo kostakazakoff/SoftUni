@@ -17,7 +17,7 @@ There should be created one more field that will be automatically generated:
 '''
 
 class Photo(models.Model):
-    MAX_IMG_SIZE = 1.0
+    MAX_IMG_SIZE = 5.0
     DESCRIPTION_MAX_LENGTH = 300
     DESCRIPTION_MIN_LENGTH = 10
     LOCATION_MAX_LENGTH = 30

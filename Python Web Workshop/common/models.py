@@ -12,9 +12,9 @@ comment on a specific photo/post, i.e., the comment object is always connected t
 '''
 
 
-class Comment(models.Model):
+class PhotoComment(models.Model):
     COMMENT_MAX_LENGTH = 300
-    
+
     comment_text = models.CharField(
         max_length=COMMENT_MAX_LENGTH,
         null=True,
@@ -30,7 +30,7 @@ class Comment(models.Model):
         blank=False,
     )
 
-# class Like(models.Model):
+# class PhotoLike(models.Model):
 #     to_photo = models.ForeignKey(
 #         Photo,
 #         on_delete=models.CASCADE,
