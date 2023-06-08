@@ -17,11 +17,14 @@ class PhotoComment(models.Model):
 
     comment_text = models.CharField(
         max_length=COMMENT_MAX_LENGTH,
-        null=True,
-        blank=True,
+        null=False,
+        blank=False,
     )
     publication_date_time = models.DateTimeField(
         auto_now_add=True,
+        editable=False,
+        blank=True,
+        null=False,
     )
     to_photo = models.ForeignKey(
         Photo,
@@ -30,10 +33,17 @@ class PhotoComment(models.Model):
         blank=False,
     )
 
-# class PhotoLike(models.Model):
-#     to_photo = models.ForeignKey(
-#         Photo,
-#         on_delete=models.CASCADE,
-#         null=False,
-#         blank=True,
-#     )
+class PhotoLike(models.Model):
+    to_photo = models.ForeignKey(
+        Photo,
+        on_delete=models.CASCADE,
+        null=False,
+        blank=True,
+        related_name='all_photo_likes',
+    )
+    # TODO: When the Users model is created
+    # to_user = models.ForeignKey(
+    #     User,
+    #     on_delete=models.CASCADE,
+    #     related_name='user_photo_like',
+    # )
