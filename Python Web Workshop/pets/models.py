@@ -3,10 +3,17 @@ from django.utils.text import slugify
 
 
 class Pet(models.Model):
+    NAME_MAX_LENGTH = 30
+
     name = models.CharField(
-        max_length=30,
+        max_length=NAME_MAX_LENGTH,
+        null=False,
+        blank=False,
         )
-    personal_photo = models.URLField()
+    personal_photo = models.URLField(
+        null=False,
+        blank=False,
+    )
     date_of_birth = models.DateField(
         null=True,
         blank=True,
