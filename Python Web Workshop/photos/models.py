@@ -4,17 +4,6 @@ from petstagram.core.utils import mbytes_to_bytes
 from django.core.validators import MinLengthValidator
 from pets.models import Pet
 
-'''
-The field Photo is required:
-• Photo - the user can upload a picture from storage, the maximum size of the photo can be 5MB
-The fields description and tagged pets are optional:
-• Description - a user can write any description of the photo; it should consist of a maximum of 300 characters
-and a minimum of 10 characters
-• Location - it should consist of a maximum of 30 characters
-• Tagged Pets - the user can tag none, one, or many of all pets. There is no limit on the number of tagged pets
-There should be created one more field that will be automatically generated:
-• Date of publication - when a picture is added or edited, the date of publication is automatically generated
-'''
 
 class Photo(models.Model):
     MAX_IMG_SIZE = 5.0
@@ -32,7 +21,7 @@ class Photo(models.Model):
         null=False,
         blank=False,
     )
-    description = models.CharField(
+    description = models.TextField(
         max_length=DESCRIPTION_MAX_LENGTH,
         validators=[MinLengthValidator(DESCRIPTION_MIN_LENGTH)],
         blank=True,

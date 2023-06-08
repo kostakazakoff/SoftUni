@@ -29,7 +29,7 @@ class Pet(models.Model):
 
     @property
     def photos_count(self):
-        return self.photos.count()
+        return f'{self.photos.count()} photos'
 
     # Auto generate slug
     def save(self, *args, **kwargs):
