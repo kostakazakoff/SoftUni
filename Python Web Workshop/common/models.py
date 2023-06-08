@@ -5,7 +5,7 @@ from photos.models import Photo
 class PhotoComment(models.Model):
     COMMENT_MAX_LENGTH = 300
 
-    comment_text = models.CharField(
+    comment_text = models.TextField(
         max_length=COMMENT_MAX_LENGTH,
         null=False,
         blank=False,
