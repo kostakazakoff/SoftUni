@@ -5,6 +5,9 @@ from photos.models import Photo
 class PhotoComment(models.Model):
     COMMENT_MAX_LENGTH = 300
 
+    class Meta:
+        ordering = ('-publication_date_time',)
+
     comment_text = models.TextField(
         max_length=COMMENT_MAX_LENGTH,
         null=False,
@@ -21,6 +24,7 @@ class PhotoComment(models.Model):
         on_delete=models.CASCADE,
         null=False,
         blank=False,
+        related_name='photo_comments',
     )
 
 class PhotoLike(models.Model):
