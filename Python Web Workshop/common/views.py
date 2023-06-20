@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# TODO:
+
+def home(request):
+    return render(request, 'common/home-page.html')

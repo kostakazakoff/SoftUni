@@ -7,10 +7,10 @@ from .views import (
 
 
 urlpatterns = [
-    path('<int:pk>', include(
+    path('add/', photo_add, name='photo add'),
+    path('<int:pk>/', include(
         [
-            path('add/', photo_add, name='photo add'),
-            path('details/', photo_details, name='photo details'),
+            path('', photo_details, name='photo details'),
             path('edit/', photo_edit, name='photo edit'),
         ]
     )),

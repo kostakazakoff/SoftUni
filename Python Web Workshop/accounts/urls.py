@@ -11,7 +11,7 @@ from .views import (
 urlpatterns = [
     path('register/', profile_register, name='profile register'),
     path('login/', profile_login, name='profile login'),
-    path('profile/<int:pk>', include([
+    path('profile/<int:pk>/', include([
         path('', profile_details, name='profile details'),
         path('edit/', profile_edit, name='profile edit'),
         path('delete/', profile_delete, name='profile delete'),
