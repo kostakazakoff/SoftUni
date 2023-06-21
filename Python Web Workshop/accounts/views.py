@@ -5,7 +5,7 @@ def profile_register(request):
     return render(request, 'accounts/register-page.html')
 
 
-def profile_login(request, pk):
+def profile_login(request):
     return render(request, 'accounts/login-page.html')
 
 
