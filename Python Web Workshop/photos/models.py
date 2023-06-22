@@ -25,7 +25,7 @@ class Photo(models.Model):
         null=True,
         blank=True,
         max_length=DESCRIPTION_MAX_LENGTH,
-        validators=[MinLengthValidator(DESCRIPTION_MIN_LENGTH,),]
+        validators=[MinLengthValidator(DESCRIPTION_MIN_LENGTH,)]
     )
     location = models.CharField(
         max_length=LOCATION_MAX_LENGTH,
@@ -43,4 +43,6 @@ class Photo(models.Model):
 
     @property
     def get_tagged_pets(self):
-        return ', '.join(p.name for p in self.tagged_pets.all())
+        if self.tagged_pets:
+            return ', '.join(p.name for p in self.tagged_pets.all())
+        return ''

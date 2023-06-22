@@ -5,7 +5,7 @@ class ThisProject:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
-            "NAME": "postgres",
+            "NAME": "petstagram-db",
             "USER": USER,
             "PASSWORD": PASSWORD,
             "HOST": "127.0.0.1",
