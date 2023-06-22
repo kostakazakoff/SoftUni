@@ -10,18 +10,15 @@ def home(request):
 
 
 def like_functionality(request, id):
-    photo = Photo.objects.get(id=id)
-    liked_object = Like.objects.filter(to_photo_id=id).first()
+    Like.objects.create(to_photo_id=id)
+    likes = Like.objects.filter(to_photo_id=id)
+    if likes.count() > 1:
+        [like.delete() for like in likes]
 
-    if liked_object:
-        liked_object.delete()
-    else:
-        Like.objects.create(to_photo=photo)
 
-    return redirect(request.META['HTTP_REFERER'] + f'#photo-{photo.id}')
+    return redirect(request.META['HTTP_REFERER'] + f'#photo-{id}')
 
 
 def share_functionality(request, id):
     copy(request.META['HTTP_HOST'] + resolve_url('photo details', id))
-
     return redirect(request.META['HTTP_REFERER'] + f'#photo-{id}')
