@@ -1,8 +1,8 @@
 from django.db import models
-from pets.models import Pet
-from django.core.validators import MinLengthValidator
 from django.core.exceptions import ValidationError
 from petstagram.core.utils import mbytes_to_bytes
+from django.core.validators import MinLengthValidator
+from pets.models import Pet
 
 
 class Photo(models.Model):
@@ -12,35 +12,34 @@ class Photo(models.Model):
     LOCATION_MAX_LENGTH = 30
 
     def validate_max_img_size(self):
-        if self.file.size > mbytes_to_bytes(Photo.MAX_IMG_SIZE ):
+        if self.file.size > mbytes_to_bytes(Photo.MAX_IMG_SIZE):
             raise ValidationError(f'Max file size is {Photo.MAX_IMG_SIZE}MB')
         
     photo = models.ImageField(
+        upload_to='images',
+        validators=[validate_max_img_size],
         null=False,
         blank=False,
-        upload_to='photos/',
-        validators=[validate_max_img_size]
     )
     description = models.TextField(
-        null=True,
-        blank=True,
         max_length=DESCRIPTION_MAX_LENGTH,
-        validators=[MinLengthValidator(DESCRIPTION_MIN_LENGTH,),]
+        validators=[MinLengthValidator(DESCRIPTION_MIN_LENGTH)],
+        blank=True,
+        null=True,
     )
     location = models.CharField(
         max_length=LOCATION_MAX_LENGTH,
-        null=True,
         blank=True,
+        null=True,
     )
     tagged_pets = models.ManyToManyField(
         Pet,
         blank=True,
-        related_name='all_photos',
+        related_name='photos',
     )
     date_of_publication = models.DateField(
         auto_now=True,
     )
 
-    @property
-    def get_tagged_pets(self):
-        return ', '.join(p.name for p in self.tagged_pets.all())
+    def __str__(self):
+        return str(self.description)
