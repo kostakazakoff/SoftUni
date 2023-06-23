@@ -8,19 +8,7 @@
         <!-- Start Add Pet Form -->
         <form action="{% url 'pet add' %}" method="POST">
             {% csrf_token %}
-            <p>
-                <label for="pet-name">Pet name: </label>
-                {{form.name}}
-                <!-- <input type="text" placeholder="Pet name"> -->
-            </p>
-            <p>
-                <label for="pet-date">Date of birth: </label>
-                {{form.date_of_birth}}
-            </p>
-            <p>
-                <label for="pet-image">Link to image: </label>
-                {{form.personal_photo}}
-            </p>
+            {{ form.as_p }}
             <!-- Add Pet Button -->
             <button class="add-btn" type="submit">Add Pet</button>
         </form>

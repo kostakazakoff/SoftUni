@@ -4,13 +4,10 @@ from .forms import PetCreateForm
 
 
 def pet_add(request):
-    if request.method == 'GET':
-        form = PetCreateForm()
-    else:
-        form = PetCreateForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('profile details', pk=1) # TODO: user hardcode
+    form = PetCreateForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('profile details', pk=1) # TODO: user hardcode
 
     context = {'form': form}
     return render(request, 'pets/pet-add-page.html', context)
