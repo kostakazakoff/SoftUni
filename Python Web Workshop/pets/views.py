@@ -1,10 +1,26 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from petstagram.core.utils import get_pet_by_name_and_slug
+from .forms import PetCreateForm
+
 
 def pet_add(request):
-    return render(request, 'pets/pet-add-page.html')
+    if request.method == 'GET':
+        form = PetCreateForm()
+    else:
+        form = PetCreateForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('profile details', pk=1) # TODO: user hardcode
+
+    context = {'form': form}
+    return render(request, 'pets/pet-add-page.html', context)
+
 
 def pet_details(request, username, pet_slug):
-    return render(request, 'pets/pet-details-page.html')
+    pet = get_pet_by_name_and_slug(pet_slug, username)
+    total_photos_count = pet.all_photos.count()
+    context = {'pet': pet, 'total_photos_count': total_photos_count}
+    return render(request, 'pets/pet-details-page.html', context)
 
 def pet_edit(request, username, pet_slug):
     return render(request, 'pets/pet-edit-page.html')

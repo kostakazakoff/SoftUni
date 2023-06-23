@@ -6,18 +6,20 @@
         <h2>Add pet</h2>
 
         <!-- Start Add Pet Form -->
-        <form action="#">
+        <form action="{% url 'pet add' %}" method="POST">
+            {% csrf_token %}
             <p>
                 <label for="pet-name">Pet name: </label>
-                <input type="text" placeholder="Pet name">
+                {{form.name}}
+                <!-- <input type="text" placeholder="Pet name"> -->
             </p>
             <p>
                 <label for="pet-date">Date of birth: </label>
-                <input type="date">
+                {{form.date_of_birth}}
             </p>
             <p>
                 <label for="pet-image">Link to image: </label>
-                <input type="text" placeholder="Link to image">
+                {{form.personal_photo}}
             </p>
             <!-- Add Pet Button -->
             <button class="add-btn" type="submit">Add Pet</button>

@@ -1,0 +1,38 @@
+<div class="bottom">
+    {% include 'partial/like-share-section.html' %}
+
+    {% for pet in photo.tagged_pets.all %}
+    <!-- TODO: fix it when user authenticated -->
+    <a href="{% url 'pet details' username='sasho' pet_slug=pet.slug %}">
+        <p class="message">
+            <b>{{ pet.name }}</b>
+        </p>
+    </a>
+    {% endfor %}
+
+    <a href="{% url 'photo details' photo.id %}">
+        <h4 class="details">See details</h4>
+    </a>
+
+    <h5 class="postTime">{{ photo.date_of_publication }}</h5>
+
+    <!-- TODO: Start Add Comments Section -->
+    <div class="addComments">
+        <div class="reaction">
+            <h3>
+                <i class="far fa-smile"></i>
+            </h3>
+        </div>
+        <!-- Start Add Comments Form -->
+        <form method="post" action="#">
+            <label for="id_body">Body:</label>
+            <textarea name="body" cols="40" rows="10" placeholder="Add comment..." maxlength="300"
+                required="" id="id_body"></textarea>
+            <button type="submit">Post</button>
+        </form>
+        <!-- End Add Comments Form -->
+
+    </div>
+    <!-- End Add Comments Section -->
+
+</div>

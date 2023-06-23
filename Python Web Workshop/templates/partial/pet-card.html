@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="top">
+        <!-- TODO: User Details and image location -->
+        <div class="userDetails">
+            <a href="profile details">
+                <div class="profilepic">
+                    <div class="profile_img">
+                        <div class="image">
+                            <img src="/static/images/person.png" alt="img8">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <h3>
+                <a href="profile details">
+                    <!-- if user has first name and last name -->
+                    Diyan Kalaydzhiev
+                    <!-- else -->
+                    <!-- user username -->
+                </a>
+                <br>
+                {% if photo.location %}
+                <span>{{photo.location}}</span>
+                {% endif %}
+            </h3>
+        </div>
+    </div>
+
+    <!-- Post image -->
+    <div class="imgBx" id="photo-{{photo.id}}">
+        <img src="/static/images/axolotl.jpeg" alt="post" class="cover">
+    </div>
+    <!-- -->
+    {% include 'partial/photo-bottom.html' %}
+</div>

@@ -1,48 +1,47 @@
 {% extends 'common/base.html' %}
-{% load static %}
 
 {% block content %}
-    <div class="pet-profile">
-        <!-- Start Pet Personal Data Section -->
-        <div class="profile">
-            <div class="profile-data">
-                <div class="profile_img">
-                    <div class="image">
-                        <!-- Pet URL Image -->
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgoIHq82qLYnvomfz5ZkW5CLQ8VNxCyI-hUw&usqp=CAU"
-                             alt="img8">
-                    </div>
+<div class="pet-profile">
+    <div class="profile">
+        <div class="profile-data">
+            <div class="profile_img">
+                <div class="image">
+                    <img src="{{ pet.personal_photo }}" alt="image {{pet.name}}">
                 </div>
-                <div class="personal">
-                    <div class="edit">
-                        <!-- Pet Name -->
-                        <p>Sasho</p>
-                        <!-- Pet Edit Button -->
-                        <a href="">
-                            <img class="edit-img" src="{% static 'images/edit-pen-icon-6.jpg' %}" alt="edit button">
-                        </a>
-                        <!-- Pet Delete Button -->
-                        <a href="">
-                            <img class="bin-img" src="{% static 'images/icon-remove-22.jpg' %}" alt="bin button">
-                        </a>
-                    </div>
-                    <div class="data">
-                        <!-- Pet Total Photos -->
-                        <span>4</span>
-                        <p>photos</p>
-                    </div>
+            </div>
+            <div class="personal">
+                <div class="edit">
+                    <p>{{ pet.name }}</p>
+                    <!-- TODO: Fix when user authenticated -->
+                    <a href="{% url 'pet edit' username='sasho' pet_slug=pet.slug %}">
+                        <img class="edit-img" src="/static/images/edit-pen-icon-6.jpg" alt="edit button">
+                    </a>
+                    <!-- TODO: Fix when user authenticated -->
+                    <a href="{% url 'pet delete' username='sasho' pet_slug=pet.slug %}">
+                        <img class="bin-img" src="/static/images/icon-remove-22.jpg" alt="bin button">
+                    </a>
+                </div>
+                <div class="data">
+                    <!-- Pet Total Photos -->
+                    <span>{{ total_photos_count }}</span>
+                    <p>photos</p>
                 </div>
             </div>
         </div>
-        <!-- End Pet Personal Data Section -->
-
-        <div class="pet-posts">
-
-            {% include 'common/pets-posts.html' %}
-
-            <!-- IF NOT Photos Show No Post Image -->
-            <img class="no-posts" src="{% static 'images/no_posts.png' %}" alt="no posts image">
-
-        </div>
     </div>
+
+    <div class="pet-posts">
+
+        {% if total_photos_count > 0 %}
+
+        {% for photo in pet.all_photos.all %}
+        {% include 'partial/pet-card.html' %}
+        {% endfor %}
+        {% else %}
+        <img class="no-posts" src="/static/images/no_posts.png" alt="no posts image">
+
+        {% endif %}
+
+    </div>
+</div>
 {% endblock %}

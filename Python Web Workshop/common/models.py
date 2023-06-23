@@ -21,6 +21,9 @@ class Comment(models.Model):
         related_name='photo_comments',
     )
 
+    class Meta:
+        ordering = ['-date_of_publication']
+
 
 class Like(models.Model):
     to_photo = models.ForeignKey(
