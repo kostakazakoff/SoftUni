@@ -40,11 +40,11 @@
                         <div class="edit-delete-btns">
 
                             <!-- Link to Edit Pet Photo Page -->
-                            <a href="#">
+                            <a href="{% url 'photo edit' photo.id %}">
                                 <img class="edit-img" src="{% static 'images/edit-pen-icon-6.jpg' %}" alt="edit button">
                             </a>
 
-                            <!-- Link to Delete Pet Photo Page -->
+                            <!-- TODO: Link to Delete Pet Photo Page -->
                             <a href="#">
                                 <img class="bin-img" src="{% static 'images/icon-remove-22.jpg' %}" alt="bin button">
                             </a>

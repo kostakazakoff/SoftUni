@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from petstagram.core.utils import get_pet_by_name_and_slug
-from .forms import PetCreateForm
+from .forms import PetForm
 
 
 def pet_add(request):
-    form = PetCreateForm(request.POST or None)
+    form = PetForm(request.POST or None)
     if form.is_valid():
         form.save()
         return redirect('profile details', pk=1) # TODO: user hardcode
