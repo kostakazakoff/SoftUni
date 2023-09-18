@@ -32,10 +32,6 @@ class ChessPad:
                 return False
         return True
 
-size = 8
-matrix = [['-'] * size for _ in range(size)]
-gamepad = ChessPad(matrix)
-
 
 def put_queens(row):
     if row == 8:
@@ -47,6 +43,11 @@ def put_queens(row):
             gamepad.set_queen(row, col)
             put_queens(row+1)
             gamepad.remove_queen(row, col)
+
+
+size = 8
+matrix = [['-'] * size for _ in range(size)]
+gamepad = ChessPad(matrix)
 
 
 put_queens(0)
