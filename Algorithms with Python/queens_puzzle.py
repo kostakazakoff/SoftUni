@@ -32,8 +32,8 @@ class ChessPad:
                 return False
         return True
 
-
-matrix = [['-'] * 8 for _ in range(8)]
+size = 8
+matrix = [['-'] * size for _ in range(size)]
 gamepad = ChessPad(matrix)
 
 
