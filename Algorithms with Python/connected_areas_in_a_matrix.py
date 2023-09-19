@@ -11,6 +11,7 @@ def seek_and_count(r, c, rows, cols, matrix):
     
     matrix[r][c] = 'v'
     result = 1
+    
     result += seek_and_count(r, c + 1, rows, cols, matrix)
     result += seek_and_count(r, c - 1, rows, cols, matrix)
     result += seek_and_count(r + 1, c, rows, cols, matrix)
