@@ -44,5 +44,4 @@ for word in words:
 
         idx += len(word)
 
-        
 generate_expression(0, exp_end, words_by_index, words_count, [])
