@@ -9,8 +9,8 @@ def bubble_sort(arr):
                 nums_are_sorted = False
         search_end -= 1
     
-    return ' '.join(str(n) for n in arr)
+    print(' '.join(str(n) for n in arr))
 
 
 nums = [int(x) for x in input().split()]
-print(bubble_sort(nums))
+bubble_sort(nums)
