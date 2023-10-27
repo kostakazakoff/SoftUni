@@ -6,7 +6,7 @@ export default function Slider() {
                 <div className="aa-top-slider">
                     {/* Top slider single slide */}
                     <div className="aa-top-slider-single">
-                        <img src="../../public/img/interior2.jpg" alt="img" />
+                        <img src="./public/img/interior2.jpg" alt="img" />
                         {/* Top slider content */}
                         <div className="aa-top-slider-content">
                             <span className="aa-top-slider-catg">Duplex</span>

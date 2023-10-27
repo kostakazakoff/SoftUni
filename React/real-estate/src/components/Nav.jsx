@@ -25,7 +25,7 @@ export default function Nav() {
                             Home <span>Property</span>
                         </a>
                         {/* Image based logo */}
-                        {/* <a class="navbar-brand aa-logo-img" href="index.html"><img src="../../public/img/logo.png" alt="logo"></a> */}
+                        {/* <a class="navbar-brand aa-logo-img" href="index.html"><img src="./public/img/logo.png" alt="logo"></a> */}
                     </div>
                     <div id="navbar" className="navbar-collapse collapse">
                         <ul id="top-menu" className="nav navbar-nav navbar-right aa-main-nav">
