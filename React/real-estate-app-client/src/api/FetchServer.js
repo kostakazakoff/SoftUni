@@ -1,6 +1,6 @@
 const baseURL = 'http://localhost:8080/api'
 
-export const getAll = async (root, method) => {
+export const getAll = async (root, method='GET') => {
     const options = {
         method: method,
         headers: {
