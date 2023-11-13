@@ -8,10 +8,10 @@ const EstatesList = () => {
 
     useEffect(() => {
         getAll('real_estates')
-            .then(response => setData(response))
+            .then(data => setData(data))
     }, []);
 
-    
+
     return (
         <div className="container-xxl d-flex flex-wrap gap-3 mt-3">
             {data.map(estate => (
@@ -24,6 +24,7 @@ const EstatesList = () => {
                 />
             ))}
         </div>
+
     )
 }
 
