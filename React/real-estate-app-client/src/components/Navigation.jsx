@@ -8,8 +8,7 @@ import { Link } from 'react-router-dom';
 
 const Navigation = () => {
     return (
-        <Navbar sticky="top" expand="lg" className="bg-body-tertiary">
-            <Container>
+        <Navbar sticky="top" expand="lg" className="bg-body-tertiary shadow p-3">
                 <Navbar.Brand as={Link} to='/'>Real Estates Site</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -29,7 +28,6 @@ const Navigation = () => {
                         </NavDropdown> */}
                     </Nav>
                 </Navbar.Collapse>
-            </Container>
         </Navbar>
     );
 }

@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import EstateCard from "./EstateCard";
-import { getAll } from "../api/FetchServer";
+import { getData } from "../api/FetchServer";
 
 
 const EstatesList = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        getAll('real_estates')
+        getData('real_estates')
             .then(data => setData(data))
     }, []);
 
@@ -17,6 +17,7 @@ const EstatesList = () => {
             {data.map(estate => (
                 <EstateCard
                     key={estate.id}
+                    id={estate.id}
                     name={estate.name}
                     description={estate.description}
                     rooms={estate.rooms}

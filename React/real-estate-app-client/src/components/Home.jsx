@@ -1,32 +1,26 @@
 import Carousel from 'react-bootstrap/Carousel';
-import ExampleCarouselImage from './ExampleCarouselImage';
+import { useEffect, useState } from 'react';
+import { getData as getData } from '../api/FetchServer';
+import CarouselImage from './CarouselImage';
 
 export default function Home() {
-    return (
-        <Carousel>
-          <Carousel.Item>
-            <ExampleCarouselImage text="First slide" />
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    getData('list-categories')
+      .then(data => setCategories(data));
+  }, []);
+
+  return (
+    <Carousel style={{ textAlign: 'center' }}>
+      {categories.map(category => (
+        <Carousel.Item key={category.id}>
+            <CarouselImage text="Rent" />
             <Carousel.Caption>
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                <h3>{category.name}</h3>
             </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <ExampleCarouselImage text="Second slide" />
-            <Carousel.Caption>
-              <h3>Second slide label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <ExampleCarouselImage text="Third slide" />
-            <Carousel.Caption>
-              <h3>Third slide label</h3>
-              <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-              </p>
-            </Carousel.Caption>
-          </Carousel.Item>
-        </Carousel>
-      );
+        </Carousel.Item >
+      ))}
+    </Carousel>
+  );
 }
