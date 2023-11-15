@@ -15,7 +15,7 @@ const EstateCard = (props) => {
                             Rooms: {props.rooms}
                         </div>
                         <div>
-                            Price: {props.price}
+                            Price: {props.price} { props.currency }
                         </div>
                     </div>
                     <Button as={Link} to={`/estates/${props.id}`} variant="primary">Details</Button>
