@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getData } from "../api/FetchServer";
+import { fetchServer } from "../api/FetchServer";
 import { Figure } from "react-bootstrap";
 
 const EstateDetails = () => {
@@ -9,7 +9,7 @@ const EstateDetails = () => {
     const [data, setData] = useState({});
 
     useEffect(() => {
-        getData(`real_estates/${id}`)
+        fetchServer(`real-estates/${id}`)
             .then(result => setData(result));
     }, [id]);
 

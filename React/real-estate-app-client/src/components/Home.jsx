@@ -1,13 +1,13 @@
 import Carousel from 'react-bootstrap/Carousel';
 import { useEffect, useState } from 'react';
-import { getData as getData } from '../api/FetchServer';
+import { fetchServer as fetchServer } from '../api/FetchServer';
 import CarouselImage from './CarouselImage';
 
 export default function Home() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    getData('list-categories')
+    fetchServer('list-categories')
       .then(data => setCategories(data));
   }, []);
 

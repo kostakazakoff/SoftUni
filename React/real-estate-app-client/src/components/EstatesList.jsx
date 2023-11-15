@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import EstateCard from "./EstateCard";
-import { getData } from "../api/FetchServer";
+import { fetchServer } from "../api/FetchServer";
 
 
 const EstatesList = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        getData('real_estates')
-            .then(data => setData(data))
+        fetchServer('real-estates')
+            .then(data => setData(data.estates))
     }, []);
 
 
@@ -22,6 +22,7 @@ const EstatesList = () => {
                     description={estate.description}
                     rooms={estate.rooms}
                     price={estate.price}
+                    currency={estate.currency}
                 />
             ))}
         </div>

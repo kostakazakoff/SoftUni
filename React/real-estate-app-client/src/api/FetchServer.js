@@ -1,6 +1,6 @@
 const baseURL = 'http://localhost:8080/api'
 
-export const getData = async (root, method='GET') => {
+export const fetchServer = async (root, method='GET') => {
     const options = {
         method: method,
         headers: {
@@ -11,5 +11,5 @@ export const getData = async (root, method='GET') => {
     const response = await fetch(`${baseURL}/${root}`, options);
     const data = await response.json();
 
-    return Object.values(data)[0];
+    return data;
 };
