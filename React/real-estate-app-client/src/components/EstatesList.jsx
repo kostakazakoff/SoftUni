@@ -22,7 +22,7 @@ const EstatesList = () => {
                     description={estate.description}
                     rooms={estate.rooms}
                     price={estate.price}
-                    currency={estate.currency}
+                    currency='EUR'
                 />
             ))}
         </div>

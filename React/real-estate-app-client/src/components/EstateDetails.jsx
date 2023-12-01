@@ -25,7 +25,7 @@ const EstateDetails = () => {
                 <h2>{ data.name }</h2>
                 <p>{ data.description }</p>
                 <p>Rooms: { data.rooms }</p>
-                <h4>Price: { data.price } { data.currency }</h4>
+                <h4>Price: { data.price }</h4>
             </Figure.Caption>
         </Figure>
     );

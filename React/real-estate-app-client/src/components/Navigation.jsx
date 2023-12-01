@@ -15,6 +15,7 @@ const Navigation = () => {
                     <Nav className="me-auto">
                         <Nav.Link as={Link} to='/'>Home</Nav.Link>
                         <Nav.Link as={Link} to='/estates'>Estates</Nav.Link>
+                        <Nav.Link as={Link} to='/estates/create'>Add estate</Nav.Link>
                         {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">
