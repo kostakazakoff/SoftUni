@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 const CreateEstate = () => {
     let [data, setData] = useState('');
     const [categories, setCategories] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState(1);
 
     useEffect(() => {
         fetchServer('list-categories')
@@ -18,9 +19,7 @@ const CreateEstate = () => {
     const SubmitHandler = (e) => {
         e.preventDefault();
 
-        console.log(data);
-
-        fetchServer('real-estates/create', data, 'POST');
+        fetchServer('real-estates/create', {data, 'category_id': selectedCategory}, 'POST');
     }
 
     const transformDataToObject = () => {
@@ -44,11 +43,10 @@ const CreateEstate = () => {
         setData(data);
     }
 
-    const handleSelected = (e) => {
-        data[e.target.name] = Number(e.target.value)
-
-        setData(data);
+    const handleCategoryChange = (e) => {
+        setSelectedCategory(Number(e.target.value));
     }
+    
 
     return (
         <>
@@ -127,7 +125,7 @@ const CreateEstate = () => {
 
                     <Form.Group className="mb-3">
                         <Form.Label>Category</Form.Label>
-                        <Form.Select value={data.categories} onChange={handleSelected} name='category_id'>
+                        <Form.Select value={selectedCategory} onChange={handleCategoryChange} name='category_id'>
                             {categories.map((category) => (
                                 <option key={category.id} value={category.id}>
                                     {category.name}
