@@ -6,16 +6,14 @@ import { useState, useEffect } from "react";
 
 
 const CreateEstate = () => {
-    const [data, setData] = useState();
 
     const CreateEstateSubmitHandler = (e) => {
         e.preventDefault();
 
         const estateData = Object.fromEntries(new FormData(e.currentTarget));
+        console.log(estateData);
 
-        const responseData = fetchServer('real-estates/create', estateData, 'POST');
-
-        // console.log(responseData);
+        fetchServer('real-estates/create', estateData, 'POST');
     }
 
     return (

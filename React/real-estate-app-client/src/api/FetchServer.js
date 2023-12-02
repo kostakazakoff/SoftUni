@@ -2,17 +2,16 @@ const baseURL = 'http://localhost:8000/api'
 
 export const fetchServer = async (root, inputData, method='GET') => {
     let options;
-    if (method == 'POST') {
+    if (method == 'GET') {
         if (inputData.images) {
             console.log(inputData.images);
         }
         options = {
             method: method,
             headers: {
-                'Content-Type': 'application/json',
                 'X-Requested-With': 'XMLHttpRequest',
-            },
-            body: JSON.stringify({...inputData}),
+                'Content-Type': 'application/json',
+            }
         };
     } else {
         options = {
@@ -21,6 +20,7 @@ export const fetchServer = async (root, inputData, method='GET') => {
                 'Content-Type': 'application/json',
                 'X-Requested-With': 'XMLHttpRequest',
             },
+            body: JSON.stringify({...inputData}),
         };
     }
     
