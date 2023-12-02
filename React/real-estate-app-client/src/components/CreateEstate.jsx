@@ -7,13 +7,23 @@ import { useState, useEffect } from "react";
 
 const CreateEstate = () => {
     let [data, setData] = useState('');
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        fetchServer('list-categories')
+            .then(data => setCategories(data))
+            .catch(e => console.log(e));
+    }, []);
+
+    console.log(categories);
 
     const SubmitHandler = (e) => {
         e.preventDefault();
 
         console.log(data);
 
-        fetchServer('real-estates/create', data, 'POST');
+        const result = fetchServer('real-estates/create', data, 'POST');
+        console.log(result);
     }
 
     const transformDataToObject = () => {
@@ -110,14 +120,15 @@ const CreateEstate = () => {
                         />
                     </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="category_id">
-                        <Form.Label>category_id</Form.Label>
-                        <Form.Control
-                            type="number"
-                            name="category_id"
-                            value={data.category_id}
-                            onChange={handleData}
-                        />
+                    <Form.Group className="mb-3">
+                        <Form.Label>Category</Form.Label>
+                        <Form.Select value={data.categories} onChange={handleData} name='categories'>
+                            {categories.map((category) => (
+                                <option key={category.id} value={category.id}>
+                                    {category.name}
+                                </option>
+                            ))}
+                        </Form.Select>
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="rooms">
