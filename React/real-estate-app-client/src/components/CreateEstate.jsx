@@ -23,15 +23,15 @@ const CreateEstate = () => {
         }
     }
 
-    const handleInputData = (e) => {
+    const handleData = (e) => {
         e.target.type === 'number'
             ? data[e.target.name] = Number(e.target.value)
-            : data[e.target.name] = e.target.value
+            : data[e.target.name] = e.target.value;
 
         setData(data);
     }
 
-    const handleInputImages = (e) => {
+    const handleImages = (e) => {
         data[e.target.name] = e.target.files
     }
 
@@ -46,7 +46,7 @@ const CreateEstate = () => {
                             type="text"
                             name="name"
                             value={data.name}
-                            onChange={handleInputData}
+                            onChange={handleData}
                         />
                     </Form.Group>
 
@@ -56,7 +56,7 @@ const CreateEstate = () => {
                             type="text"
                             name="location"
                             value={data.location}
-                            onChange={handleInputData}
+                            onChange={handleData}
                         />
                     </Form.Group>
 
@@ -66,7 +66,7 @@ const CreateEstate = () => {
                             type="text"
                             name="description"
                             value={data.description}
-                            onChange={handleInputData}
+                            onChange={handleData}
                         />
                     </Form.Group>
 
@@ -76,7 +76,7 @@ const CreateEstate = () => {
                             type="number"
                             name="price"
                             value={data.price}
-                            onChange={handleInputData}
+                            onChange={handleData}
                         />
                     </Form.Group>
 
@@ -86,7 +86,7 @@ const CreateEstate = () => {
                             type="text"
                             name="currency"
                             value={data.currency}
-                            onChange={handleInputData}
+                            onChange={handleData}
                         />
                     </Form.Group>
 
@@ -96,7 +96,7 @@ const CreateEstate = () => {
                             type="text"
                             name="latitude"
                             value={data.latitude}
-                            onChange={handleInputData}
+                            onChange={handleData}
                         />
                     </Form.Group>
 
@@ -106,7 +106,7 @@ const CreateEstate = () => {
                             type="text"
                             name="longitude"
                             value={data.longitude}
-                            onChange={handleInputData}
+                            onChange={handleData}
                         />
                     </Form.Group>
 
@@ -116,7 +116,7 @@ const CreateEstate = () => {
                             type="number"
                             name="category_id"
                             value={data.category_id}
-                            onChange={handleInputData}
+                            onChange={handleData}
                         />
                     </Form.Group>
 
@@ -126,7 +126,7 @@ const CreateEstate = () => {
                             type="number"
                             name="rooms"
                             value={data.rooms}
-                            onChange={handleInputData}
+                            onChange={handleData}
                         />
                     </Form.Group>
 
@@ -136,7 +136,7 @@ const CreateEstate = () => {
                             type="text"
                             name="arrive_hour"
                             value={data.arrive_hour}
-                            onChange={handleInputData}
+                            onChange={handleData}
                         />
                     </Form.Group>
 
@@ -146,7 +146,7 @@ const CreateEstate = () => {
                             type="text"
                             name="leave_hour"
                             value={data.leave_hour}
-                            onChange={handleInputData}
+                            onChange={handleData}
                         />
                     </Form.Group>
 
@@ -156,7 +156,7 @@ const CreateEstate = () => {
                             type="number"
                             name="user_id"
                             value={data.user_id}
-                            onChange={handleInputData}
+                            onChange={handleData}
                         />
                     </Form.Group>
 
@@ -167,7 +167,7 @@ const CreateEstate = () => {
                             name="images"
                             multiple
                             value={data.images}
-                            onChange={handleInputImages}
+                            onChange={handleImages}
                         />
                     </Form.Group>
 
