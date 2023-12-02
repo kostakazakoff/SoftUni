@@ -3,9 +3,6 @@ const baseURL = 'http://localhost:8000/api'
 export const fetchServer = async (root, inputData, method='GET') => {
     let options;
     if (method == 'GET') {
-        if (inputData.images) {
-            console.log(inputData.images);
-        }
         options = {
             method: method,
             headers: {
