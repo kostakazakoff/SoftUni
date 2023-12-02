@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 const CreateEstate = () => {
     let [data, setData] = useState('');
 
-    const CreateEstateSubmitHandler = (e) => {
+    const SubmitHandler = (e) => {
         e.preventDefault();
 
         console.log(data);
@@ -38,7 +38,7 @@ const CreateEstate = () => {
     return (
         <>
             <Container>
-                <Form id='creste' onSubmit={CreateEstateSubmitHandler} encType="multipart/form-data" onFocus={transformDataToObject}>
+                <Form id='creste' onSubmit={SubmitHandler} encType="multipart/form-data" onFocus={transformDataToObject}>
 
                     <Form.Group className="mb-3" controlId="name">
                         <Form.Label>Property name</Form.Label>
