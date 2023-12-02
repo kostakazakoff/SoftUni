@@ -15,15 +15,12 @@ const CreateEstate = () => {
             .catch(e => console.log(e));
     }, []);
 
-    console.log(categories);
-
     const SubmitHandler = (e) => {
         e.preventDefault();
 
         console.log(data);
 
-        const result = fetchServer('real-estates/create', data, 'POST');
-        console.log(result);
+        fetchServer('real-estates/create', data, 'POST');
     }
 
     const transformDataToObject = () => {
@@ -43,6 +40,14 @@ const CreateEstate = () => {
 
     const handleImages = (e) => {
         data[e.target.name] = e.target.files
+
+        setData(data);
+    }
+
+    const handleSelected = (e) => {
+        data[e.target.name] = Number(e.target.value)
+
+        setData(data);
     }
 
     return (
@@ -122,7 +127,7 @@ const CreateEstate = () => {
 
                     <Form.Group className="mb-3">
                         <Form.Label>Category</Form.Label>
-                        <Form.Select value={data.categories} onChange={handleData} name='categories'>
+                        <Form.Select value={data.categories} onChange={handleSelected} name='category_id'>
                             {categories.map((category) => (
                                 <option key={category.id} value={category.id}>
                                     {category.name}
