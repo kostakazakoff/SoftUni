@@ -14,8 +14,8 @@ export const fetchServer = async (root, inputData, method='GET') => {
         options = {
             method: method,
             headers: {
-                'Content-Type': 'application/json',
                 'X-Requested-With': 'XMLHttpRequest',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({...inputData}),
         };
