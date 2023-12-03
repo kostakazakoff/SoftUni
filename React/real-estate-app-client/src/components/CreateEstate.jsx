@@ -15,11 +15,11 @@ const CreateEstate = () => {
         'currency': '',
         'latitude': '',
         'longitude': '',
-        'category_id': 1,
+        'category_id': '1',
         'rooms': '',
         'arrive_hour': '',
         'leave_hour': '',
-        'images': [],
+        'images': '',
     });
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState(1);
@@ -73,9 +73,9 @@ const CreateEstate = () => {
     }
 
     const handleData = (e) => {
-        e.target.type === 'number'
-            ? setData(data => ({ ...data, [e.target.name]: Number(e.target.value) }))
-            : setData(data => ({ ...data, [e.target.name]: e.target.value }));
+        // e.target.type === 'number'
+        //     ? setData(data => ({ ...data, [e.target.name]: Number(e.target.value) }))
+        setData(data => ({ ...data, [e.target.name]: e.target.value }));
     }
 
     const handleImages = (e) => {
@@ -84,14 +84,14 @@ const CreateEstate = () => {
     console.log(data);
 
     const handleCategoryChange = (e) => {
-        setSelectedCategory(Number(e.target.value));
+        setSelectedCategory(e.target.value);
         setData(data => ({ ...data, 'category_id': Number(e.target.value) }));
     }
 
 
     return (
         <>
-            <Container style={{width: '30%', margin: '60px auto'}}>
+            <Container style={{ width: '30%', margin: '60px auto' }}>
                 <Form id='creste' onSubmit={SubmitHandler} encType="multipart/form-data">
 
                     <Form.Group className="mb-3" controlId="name">
