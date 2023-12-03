@@ -18,8 +18,7 @@ const CreateEstate = () => {
 
     const SubmitHandler = (e) => {
         e.preventDefault();
-
-        fetchServer('real-estates/create', {data, 'category_id': selectedCategory}, 'POST');
+        fetchServer('real-estates/create', {...data, 'category_id': selectedCategory}, 'POST');
     }
 
     const transformDataToObject = () => {
@@ -32,13 +31,11 @@ const CreateEstate = () => {
         e.target.type === 'number'
             ? data[e.target.name] = Number(e.target.value)
             : data[e.target.name] = e.target.value;
-
         setData(data);
     }
 
     const handleImages = (e) => {
         data[e.target.name] = e.target.files
-
         setData(data);
     }
 
