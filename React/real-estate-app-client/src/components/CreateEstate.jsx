@@ -24,38 +24,6 @@ const CreateEstate = () => {
         formData.append('text', JSON.stringify(data));
         console.log(formData.entries());
         fetchServer('real-estates/create', data, 'POST');
-
-        // console.log(Array.from(e.target.images.files));
-
-
-        // const myHeaders = new Headers();
-        // myHeaders.append("Accept", "application/json");
-
-        // const formdata = new FormData();
-        // formdata.append("user_id", "123");
-        // formdata.append("name", "Гълъбец център");
-        // formdata.append("location", "Galabetz, Nesebar, Bulgaria");
-        // formdata.append("description", "Хари");
-        // formdata.append("price", "0");
-        // formdata.append("currency", "BGN");
-        // formdata.append("category_id", "2");
-        // formdata.append("rooms", "1");
-        // formdata.append("latitude", "42.772129");
-        // formdata.append("longitude", "27.529766");
-        // formdata.append("arrive_hour", "14:00:00");
-        // formdata.append("leave_hour", "11:00:00");
-        // formdata.append("images", Array.from(e.target.images.files)[0]);
-
-        // const requestOptions = {
-        //     method: 'POST',
-        //     headers: myHeaders,
-        //     body: formdata,
-        // };
-
-        // fetch("http://localhost:8000/api/real-estates/create", requestOptions)
-        //     .then(response => response.text())
-        //     .then(result => console.log(result))
-        //     .catch(error => console.log('error', error));
     }
 
     const handleData = (e) => {
@@ -83,7 +51,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="text"
                             name="name"
-                            value={data.name?data.name:''}
+                            value={data.name ? data.name : ''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -93,7 +61,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="text"
                             name="location"
-                            value={data.location?data.location:''}
+                            value={data.location ? data.location : ''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -103,7 +71,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="text"
                             name="description"
-                            value={data.description?data.description:''}
+                            value={data.description ? data.description : ''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -113,19 +81,18 @@ const CreateEstate = () => {
                         <Form.Control
                             type="number"
                             name="price"
-                            value={data.price?data.price:''}
+                            value={data.price ? data.price : ''}
                             onChange={handleData}
                         />
                     </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="currency">
+                    <Form.Group className="mb-3">
                         <Form.Label>Currency</Form.Label>
-                        <Form.Control
-                            type="text"
-                            name="currency"
-                            value={data.currency?data.currency:'BGN'}
-                            onChange={handleData}
-                        />
+                        <Form.Select value={data.currency ? data.currency : 'BGN'} onChange={handleData} name='currency'>
+                            <option key='BGN' value='1'>BGN</option>
+                            <option key='EUR' value='2'>EUR</option>
+                            <option key='USD' value='3'>USD</option>
+                        </Form.Select>
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="latitude">
@@ -133,7 +100,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="text"
                             name="latitude"
-                            value={data.latitude?data.latitude:''}
+                            value={data.latitude ? data.latitude : ''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -143,7 +110,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="text"
                             name="longitude"
-                            value={data.longitude?data.longitude:''}
+                            value={data.longitude ? data.longitude : ''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -164,7 +131,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="number"
                             name="rooms"
-                            value={data.rooms?data.rooms:''}
+                            value={data.rooms ? data.rooms : ''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -174,7 +141,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="text"
                             name="arrive_hour"
-                            value={data.arrive_hour?data.arrive_hour:''}
+                            value={data.arrive_hour ? data.arrive_hour : ''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -184,7 +151,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="text"
                             name="leave_hour"
-                            value={data.leave_hour?data.leave_hour:''}
+                            value={data.leave_hour ? data.leave_hour : ''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -194,7 +161,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="number"
                             name="user_id"
-                            value={data.user_id?data.user_id:''}
+                            value={data.user_id ? data.user_id : ''}
                             onChange={handleData}
                         />
                     </Form.Group>
