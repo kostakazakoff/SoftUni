@@ -6,21 +6,7 @@ import { useState, useEffect } from "react";
 
 
 const CreateEstate = () => {
-    let [data, setData] = useState({
-        'user_id': '',
-        'name': '',
-        'location': '',
-        'description': '',
-        'price': '',
-        'currency': '',
-        'latitude': '',
-        'longitude': '',
-        'category_id': '1',
-        'rooms': '',
-        'arrive_hour': '',
-        'leave_hour': '',
-        'images': '',
-    });
+    let [data, setData] = useState({});
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState(1);
 
@@ -97,7 +83,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="text"
                             name="name"
-                            value={data.name}
+                            value={data.name?data.name:''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -107,7 +93,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="text"
                             name="location"
-                            value={data.location}
+                            value={data.location?data.location:''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -117,7 +103,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="text"
                             name="description"
-                            value={data.description}
+                            value={data.description?data.description:''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -127,7 +113,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="number"
                             name="price"
-                            value={data.price}
+                            value={data.price?data.price:''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -137,7 +123,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="text"
                             name="currency"
-                            value={data.currency}
+                            value={data.currency?data.currency:'BGN'}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -147,7 +133,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="text"
                             name="latitude"
-                            value={data.latitude}
+                            value={data.latitude?data.latitude:''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -157,7 +143,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="text"
                             name="longitude"
-                            value={data.longitude}
+                            value={data.longitude?data.longitude:''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -178,7 +164,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="number"
                             name="rooms"
-                            value={data.rooms}
+                            value={data.rooms?data.rooms:''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -188,7 +174,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="text"
                             name="arrive_hour"
-                            value={data.arrive_hour}
+                            value={data.arrive_hour?data.arrive_hour:''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -198,7 +184,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="text"
                             name="leave_hour"
-                            value={data.leave_hour}
+                            value={data.leave_hour?data.leave_hour:''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -208,7 +194,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="number"
                             name="user_id"
-                            value={data.user_id}
+                            value={data.user_id?data.user_id:''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -219,7 +205,6 @@ const CreateEstate = () => {
                             type="file"
                             name="images"
                             multiple
-                            // value={data.images}
                             onChange={handleImages}
                         />
                     </Form.Group>
