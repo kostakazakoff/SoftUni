@@ -7,7 +7,7 @@ export const fetchServer = async (root, inputData, method='GET') => {
             method: method,
             headers: {
                 'X-Requested-With': 'XMLHttpRequest',
-                'Content-Type': 'application/json',
+                'Accept': 'application/json',
             }
         };
     } else {
@@ -15,7 +15,8 @@ export const fetchServer = async (root, inputData, method='GET') => {
             method: method,
             headers: {
                 'X-Requested-With': 'XMLHttpRequest',
-                'Content-Type': 'application/json',
+                'Content-Type': 'multipart/form-data',
+                'Accept': 'application/json',
             },
             body: JSON.stringify({...inputData}),
         };
