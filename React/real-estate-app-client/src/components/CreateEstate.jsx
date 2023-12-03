@@ -34,8 +34,8 @@ const CreateEstate = () => {
         e.preventDefault();
 
         const formData = new FormData();
-        formData.append('image', Array.from(data.images));
-        formData.append('text', data.text);
+        formData.append('image', data.images);
+        formData.append('text', JSON.stringify(data));
         console.log(formData.entries());
         fetchServer('real-estates/create', data, 'POST');
 
@@ -73,19 +73,17 @@ const CreateEstate = () => {
     }
 
     const handleData = (e) => {
-        // e.target.type === 'number'
-        //     ? setData(data => ({ ...data, [e.target.name]: Number(e.target.value) }))
-        setData(data => ({ ...data, [e.target.name]: e.target.value }));
+        setData(state => ({ ...state, [e.target.name]: e.target.value }));
     }
 
     const handleImages = (e) => {
-        setData(data => ({ ...data, 'images': e.target.files }));
+        setData(state => ({ ...state, 'images': e.target.files }));
     }
     console.log(data);
 
     const handleCategoryChange = (e) => {
         setSelectedCategory(e.target.value);
-        setData(data => ({ ...data, 'category_id': Number(e.target.value) }));
+        setData(state => ({ ...state, 'category_id': Number(e.target.value) }));
     }
 
 
