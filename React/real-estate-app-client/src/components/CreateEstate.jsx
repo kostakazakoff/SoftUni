@@ -6,7 +6,21 @@ import { useState, useEffect } from "react";
 
 
 const CreateEstate = () => {
-    let [data, setData] = useState('');
+    let [data, setData] = useState({
+        'user_id': '',
+        'name': '',
+        'location': '',
+        'description': '',
+        'price': '',
+        'currency': '',
+        'latitude': '',
+        'longitude': '',
+        'category_id': 1,
+        'rooms': '',
+        'arrive_hour': '',
+        'leave_hour': '',
+        'images': [],
+    });
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState(1);
 
@@ -18,36 +32,67 @@ const CreateEstate = () => {
 
     const SubmitHandler = (e) => {
         e.preventDefault();
-        fetchServer('real-estates/create', {...data, 'category_id': selectedCategory}, 'POST');
-    }
 
-    const transformDataToObject = () => {
-        if (data === '') {
-            setData({});
-        }
+        const formData = new FormData();
+        formData.append('image', Array.from(data.images));
+        formData.append('text', data.text);
+        console.log(formData.entries());
+        fetchServer('real-estates/create', data, 'POST');
+
+        // console.log(Array.from(e.target.images.files));
+
+
+        // const myHeaders = new Headers();
+        // myHeaders.append("Accept", "application/json");
+
+        // const formdata = new FormData();
+        // formdata.append("user_id", "123");
+        // formdata.append("name", "Гълъбец център");
+        // formdata.append("location", "Galabetz, Nesebar, Bulgaria");
+        // formdata.append("description", "Хари");
+        // formdata.append("price", "0");
+        // formdata.append("currency", "BGN");
+        // formdata.append("category_id", "2");
+        // formdata.append("rooms", "1");
+        // formdata.append("latitude", "42.772129");
+        // formdata.append("longitude", "27.529766");
+        // formdata.append("arrive_hour", "14:00:00");
+        // formdata.append("leave_hour", "11:00:00");
+        // formdata.append("images", Array.from(e.target.images.files)[0]);
+
+        // const requestOptions = {
+        //     method: 'POST',
+        //     headers: myHeaders,
+        //     body: formdata,
+        // };
+
+        // fetch("http://localhost:8000/api/real-estates/create", requestOptions)
+        //     .then(response => response.text())
+        //     .then(result => console.log(result))
+        //     .catch(error => console.log('error', error));
     }
 
     const handleData = (e) => {
         e.target.type === 'number'
-            ? data[e.target.name] = Number(e.target.value)
-            : data[e.target.name] = e.target.value;
-        setData(data);
+            ? setData(data => ({ ...data, [e.target.name]: Number(e.target.value) }))
+            : setData(data => ({ ...data, [e.target.name]: e.target.value }));
     }
 
     const handleImages = (e) => {
-        data[e.target.name] = e.target.files
-        setData(data);
+        setData(data => ({ ...data, 'images': e.target.files }));
     }
+    console.log(data);
 
     const handleCategoryChange = (e) => {
         setSelectedCategory(Number(e.target.value));
+        setData(data => ({ ...data, 'category_id': Number(e.target.value) }));
     }
-    
+
 
     return (
         <>
             <Container>
-                <Form id='creste' onSubmit={SubmitHandler} encType="multipart/form-data" onFocus={transformDataToObject}>
+                <Form id='creste' onSubmit={SubmitHandler} encType="multipart/form-data">
 
                     <Form.Group className="mb-3" controlId="name">
                         <Form.Label>Property name</Form.Label>
@@ -176,7 +221,7 @@ const CreateEstate = () => {
                             type="file"
                             name="images"
                             multiple
-                            value={data.images}
+                            // value={data.images}
                             onChange={handleImages}
                         />
                     </Form.Group>

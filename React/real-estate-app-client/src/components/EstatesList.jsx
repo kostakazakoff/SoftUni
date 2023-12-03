@@ -26,7 +26,6 @@ const EstatesList = () => {
                 />
             ))}
         </div>
-
     )
 }
 
