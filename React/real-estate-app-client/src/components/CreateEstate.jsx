@@ -91,7 +91,7 @@ const CreateEstate = () => {
 
     return (
         <>
-            <Container>
+            <Container style={{width: '30%', margin: '60px auto'}}>
                 <Form id='creste' onSubmit={SubmitHandler} encType="multipart/form-data">
 
                     <Form.Group className="mb-3" controlId="name">
