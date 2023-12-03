@@ -24,8 +24,7 @@ const CreateEstate = () => {
 
     const transformDataToObject = () => {
         if (data === '') {
-            data = {};
-            setData(data);
+            setData({});
         }
     }
 
