@@ -3,10 +3,8 @@ import { Container } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useState } from "react";
-import { fetchServer } from "../api/FetchServer";
-import Cookies from 'js-cookie';
 import { useNavigate } from "react-router-dom";
-import api from "./Api";
+import api from "../api/Api";
 
 
 const LoginPage = () => {

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import api from "./Api";
+import api from "../api/Api";
 
 
 const Logout = () => {
