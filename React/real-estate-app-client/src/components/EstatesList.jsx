@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import EstateCard from "./EstateCard";
-import { fetchServer } from "../api/FetchServer";
+import api from "../api/helpers/Api";
 
 
 const EstatesList = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetchServer('real-estates')
-            .then(data => setData(data.estates))
+        api.get('real-estates')
+            .then(response => response.data)
+            .then(state => setData(state.estates))
     }, []);
 
 

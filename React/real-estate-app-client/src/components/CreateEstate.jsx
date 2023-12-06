@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState, useEffect } from "react";
 import axios from "axios";
-import api from "../api/Api";
+import api from "../api/helpers/Api";
 import { useNavigate } from "react-router-dom";
 
 const CreateEstate = () => {
@@ -28,7 +28,9 @@ const CreateEstate = () => {
 
         api.get('user')
             .then(response => response.data.id)
+            // .then(response => console.log(response))
             .then(user_id => setFormData(state => ({ ...state, 'user_id': user_id })))
+            .then(console.log(formData))
             .then(
                 api.post('real-estates/create', { ...formData })
                     .then(response => console.log(response))

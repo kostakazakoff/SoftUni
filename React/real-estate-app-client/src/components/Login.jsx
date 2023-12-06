@@ -2,13 +2,15 @@
 import { Container } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../api/Api";
+import api from "../api/helpers/Api";
+import AuthContext from "../api/contexts/authContext";
 
 
-const LoginPage = () => {
+const Login = () => {
     const [credentials, setCredentials] = useState({});
+    // const setCredentials = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleCredentialsChange = (e) => {
@@ -17,11 +19,7 @@ const LoginPage = () => {
 
     const SubmitHandler = (e) => {
         e.preventDefault();
-
-        // fetchServer('login', credentials, 'POST')
-        // .then(console.log(Cookies.get()))
-        // .then(navigate('/estates'));
-
+        
         api.post('login', credentials)
             .then(request => console.log(request))
             .then(navigate('/estates'))
@@ -61,4 +59,4 @@ const LoginPage = () => {
     );
 }
 
-export default LoginPage;
+export default Login;
