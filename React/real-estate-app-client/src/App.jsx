@@ -5,15 +5,19 @@ import EstateDetails from './components/EstateDetails'
 import { Routes, Route } from 'react-router-dom';
 import Footer from "./components/Footer";
 import CreateEstate from "./components/CreateEstate";
+import LoginPage from "./components/Login";
+import Logout from "./components/Logout";
 
 
 function App() {
   return (
     <>
-
       <Navigation />
 
       <Routes>
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/logout' element={<Logout />} />
+        
         <Route path="/" element={<Home />} />
         <Route path="/estates" element={<EstatesList />} />
         <Route path="/estates/:id" element={<EstateDetails />} />
