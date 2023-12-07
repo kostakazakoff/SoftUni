@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route } from 'react-router-dom';
 
 import AuthContext from "./api/contexts/authContext";
@@ -17,7 +17,9 @@ function App() {
 
   const [credentials, setCredentials] = useState({});
 
-  console.log(`User credentials: ${{ credentials }}`);
+  useEffect(() => {
+    console.log(credentials);
+  }, [credentials])
 
   return (
     <>
@@ -25,7 +27,7 @@ function App() {
         credentials: credentials,
         setCredentials: setCredentials,
       }} >
-        <Navigation />
+        <Navigation credentials={credentials} />
 
         <Routes>
           <Route path='/login' element={<Login />} />

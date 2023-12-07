@@ -1,27 +1,28 @@
-
 import { Container } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import api from "../api/helpers/Api";
 import AuthContext from "../api/contexts/authContext";
 
 
 const Login = () => {
-    const {credentials, setCredentials} = useContext(AuthContext);
+    const { setCredentials } = useContext(AuthContext);
+    const [user, setUser] = useState({});
 
     const navigate = useNavigate();
 
     const handleCredentialsChange = (e) => {
-        setCredentials(old => ({ ...old, [e.target.name]: e.target.value }))
+        setUser(old => ({ ...old, [e.target.name]: e.target.value }));
     }
 
     const SubmitHandler = (e) => {
         e.preventDefault();
-        
-        api.post('login', credentials)
-            .then(request => console.log(request))
+
+        api.post('login', user)
+            .then(setCredentials(credentials => ({ ...credentials, ...user })))
             .then(navigate('/estates'))
             .catch(err => console.log(err));
     }
@@ -35,7 +36,7 @@ const Login = () => {
                         <Form.Control
                             type="email"
                             name="email"
-                            value={credentials.email ? credentials.email : ''}
+                            value={user.email ? user.email : ''}
                             onChange={handleCredentialsChange}
                         />
                     </Form.Group>
@@ -45,7 +46,7 @@ const Login = () => {
                         <Form.Control
                             type="password"
                             name="password"
-                            value={credentials.password ? credentials.password : ''}
+                            value={user.password ? user.password : ''}
                             onChange={handleCredentialsChange}
                         />
                     </Form.Group>

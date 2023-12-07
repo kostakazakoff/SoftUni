@@ -27,12 +27,10 @@ const CreateEstate = () => {
         e.preventDefault();
 
         api.get('user')
-            .then(response => response.data.id)
+            .then(response => response.data.user.id)
             .then(user_id => setFormData(state => ({ ...state, 'user_id': user_id })))
-            .then(console.log(formData))
             .then(
                 api.post('real-estates/create', { ...formData })
-                    .then(response => console.log(response))
                     .catch(err => console.error(err))
             )
             .then(navigate('/estates'))
@@ -51,7 +49,6 @@ const CreateEstate = () => {
         setSelectedCategory(e.target.value);
         setFormData(state => ({ ...state, 'category_id': Number(e.target.value) }));
     }
-
 
     return (
         <>
@@ -167,16 +164,6 @@ const CreateEstate = () => {
                             onChange={handleData}
                         />
                     </Form.Group>
-
-                    {/* <Form.Group className="mb-3" controlId="user_id">
-                        <Form.Label>user_id</Form.Label>
-                        <Form.Control
-                            type="number"
-                            name="user_id"
-                            value={data.user_id ? data.user_id : ''}
-                            onChange={handleData}
-                        />
-                    </Form.Group> */}
 
                     <Form.Group className="mb-3" controlId="images">
                         <Form.Label>images</Form.Label>

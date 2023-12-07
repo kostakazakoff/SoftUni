@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Figure } from "react-bootstrap";
 import api from "../api/helpers/Api";
+import Col from 'react-bootstrap/Col';
+import Image from 'react-bootstrap/Image';
 
 const EstateDetails = () => {
     const { id } = useParams();
@@ -16,20 +18,22 @@ const EstateDetails = () => {
     }, [id]);
 
     return (
-        <Figure>
-            <Figure.Image
-                width={600}
-                height={800}
-                alt="171x180"
-                src={estate.images && estate.images[0].url}
-            />
-            <Figure.Caption>
-                <h2>{estate.name}</h2>
-                <p>{estate.description}</p>
-                <p>Rooms: {estate.rooms}</p>
-                <h4>Price: {estate.price}</h4>
-            </Figure.Caption>
-        </Figure>
+        <>
+            <Figure>
+                <Figure.Image
+                    width={600}
+                    height={800}
+                    alt="171x180"
+                    src={estate.images && estate.images[0].url}
+                />
+                <Figure.Caption>
+                    <h2>{estate.name}</h2>
+                    <p>{estate.description}</p>
+                    <p>Rooms: {estate.rooms}</p>
+                    <h4>Price: {estate.price}</h4>
+                </Figure.Caption>
+            </Figure>
+        </>
     );
 
 }

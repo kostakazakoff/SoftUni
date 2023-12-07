@@ -14,7 +14,7 @@ const EstatesList = () => {
     }, []);
 
     return (
-        <div className="container-xxl d-flex flex-wrap gap-3 mt-3">
+        <div className="container-xxl d-flex flex-wrap gap-3 mt-3 justify-content-center">
             {estates.map(estate => (
                 <EstateCard
                     key={estate.id}
