@@ -14,12 +14,17 @@ import Footer from "./components/Footer";
 
 
 function App() {
+
   const [credentials, setCredentials] = useState({});
-  console.log(`User credentials: ${{...credentials}}`);
+
+  console.log(`User credentials: ${{ credentials }}`);
 
   return (
     <>
-      <AuthContext.Provider value={ setCredentials } >
+      <AuthContext.Provider value={{
+        credentials: credentials,
+        setCredentials: setCredentials,
+      }} >
         <Navigation />
 
         <Routes>

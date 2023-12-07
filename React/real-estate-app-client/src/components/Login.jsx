@@ -2,15 +2,15 @@
 import { Container } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/helpers/Api";
 import AuthContext from "../api/contexts/authContext";
 
 
 const Login = () => {
-    const [credentials, setCredentials] = useState({});
-    // const setCredentials = useContext(AuthContext);
+    const {credentials, setCredentials} = useContext(AuthContext);
+
     const navigate = useNavigate();
 
     const handleCredentialsChange = (e) => {
