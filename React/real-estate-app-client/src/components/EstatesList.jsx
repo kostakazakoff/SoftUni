@@ -4,21 +4,22 @@ import api from "../api/helpers/Api";
 
 
 const EstatesList = () => {
-    const [data, setData] = useState([]);
+    const [estates, setEstates] = useState([]);
 
     useEffect(() => {
         api.get('real-estates')
-            .then(response => response.data)
-            .then(state => setData(state.estates))
+            .then(response => response.data.estates)
+            .then(result => setEstates(result))
+            .catch(err => console.log(err));
     }, []);
-
 
     return (
         <div className="container-xxl d-flex flex-wrap gap-3 mt-3">
-            {data.map(estate => (
+            {estates.map(estate => (
                 <EstateCard
                     key={estate.id}
                     id={estate.id}
+                    thumb={estate.thumb}
                     name={estate.name}
                     description={estate.description}
                     rooms={estate.rooms}

@@ -6,28 +6,28 @@ import api from "../api/helpers/Api";
 
 const EstateDetails = () => {
     const { id } = useParams();
-    const [data, setData] = useState({});
+    const [estate, setEstate] = useState({});
 
     useEffect(() => {
-        // fetchServer(`real-estates/${id}`)
-        //     .then(result => setData(result));
         api.get(`real-estates/${id}`)
-            .then(result => setData(result));
+            .then(result => result.data.estate)
+            .then(result => setEstate(result))
+            .catch(e => console.log(e));
     }, [id]);
 
     return (
         <Figure>
             <Figure.Image
-                width={171}
-                height={180}
+                width={600}
+                height={800}
                 alt="171x180"
-                src="https://imageio.forbes.com/specials-images/imageserve/61cdd9ec2bbdedb659077751/Neutral-living-color-corrected/960x0.jpg?format=jpg&width=1440"
+                src={estate.images && estate.images[0].url}
             />
             <Figure.Caption>
-                <h2>{data.name}</h2>
-                <p>{data.description}</p>
-                <p>Rooms: {data.rooms}</p>
-                <h4>Price: {data.price}</h4>
+                <h2>{estate.name}</h2>
+                <p>{estate.description}</p>
+                <p>Rooms: {estate.rooms}</p>
+                <h4>Price: {estate.price}</h4>
             </Figure.Caption>
         </Figure>
     );

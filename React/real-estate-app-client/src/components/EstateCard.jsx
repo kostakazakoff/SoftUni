@@ -3,22 +3,24 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 /* eslint-disable react/prop-types */
-const EstateCard = (props) => {
+
+
+const EstateCard = (estate) => {
     return (
-            <Card className="card shadow" style={{ width: '18rem' }} key={props.id}>
-                <Card.Img variant="top" src="https://imageio.forbes.com/specials-images/imageserve/61cdd9ec2bbdedb659077751/Neutral-living-color-corrected/960x0.jpg?format=jpg&width=1440" />
+            <Card className="card shadow" style={{ width: '18rem' }} key={estate.id}>
+                <Card.Img variant="top" src={estate.thumb} />
                 <Card.Body>
-                    <Card.Title>{props.name}</Card.Title>
-                    <Card.Text>{props.description}</Card.Text>
+                    <Card.Title>{estate.name}</Card.Title>
+                    <Card.Text>{estate.description}</Card.Text>
                     <div className="d-flex flex-column mb-3">
                         <div>
-                            Rooms: {props.rooms}
+                            Rooms: {estate.rooms}
                         </div>
                         <div>
-                            Price: {props.price} {props.currency}
+                            Price: {estate.price} {estate.currency}
                         </div>
                     </div>
-                    <Button as={Link} to={`/estates/${props.id}`} variant="primary">Details</Button>
+                    <Button as={Link} to={`/estates/${estate.id}`} variant="primary">Details</Button>
                 </Card.Body>
             </Card>
     );

@@ -28,7 +28,6 @@ const CreateEstate = () => {
 
         api.get('user')
             .then(response => response.data.id)
-            // .then(response => console.log(response))
             .then(user_id => setFormData(state => ({ ...state, 'user_id': user_id })))
             .then(console.log(formData))
             .then(

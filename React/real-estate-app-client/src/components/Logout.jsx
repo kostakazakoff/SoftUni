@@ -12,7 +12,7 @@ const Logout = () => {
   useEffect(() => {
     api.post('logout')
       .then(setCredentials({}))
-      .then(navigate('/login'))
+      .then(navigate('/'))
       .catch((err) => console.log(err));
   }, []);
 }
