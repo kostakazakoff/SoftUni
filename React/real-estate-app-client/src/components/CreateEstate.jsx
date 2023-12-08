@@ -5,11 +5,15 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import api from "../api/helpers/Api";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../api/contexts/authContext";
 
 const CreateEstate = () => {
     let [formData, setFormData] = useState({ 'currency': 'BGN', 'category_id': '1' });
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState(1);
+
+    const { user_id } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -26,15 +30,8 @@ const CreateEstate = () => {
     const SubmitHandler = (e) => {
         e.preventDefault();
 
-        api.get('user')
-            // .then(response => console.log(response.data.id))
-            .then(response => response.data.id)
-            .then(user_id => setFormData(state => ({ ...state, 'user_id': user_id })))
-            .then(
-                api.post('real-estates/create', { ...formData })
-                    .catch(err => console.error(err))
-            )
-            // .then(navigate('/estates'))
+        setFormData(state => ({ ...state, 'user_id': user_id }))
+        api.post('real-estates/create', { ...formData })
             .catch(err => console.error(err));
     }
 

@@ -23,13 +23,22 @@ const Navigation = () => {
                     <Nav.Link as={Link} to='/'>Home</Nav.Link>
 
                     <Nav.Link as={Link} to='/estates'>Estates</Nav.Link>
-                    
+
 
                     <NavDropdown title={email ? email : 'USER'} id="basic-nav-dropdown" align={{ lg: 'end' }}>
-                        {!email && <NavDropdown.Item href='/login'>Login</NavDropdown.Item>}
-                        {email && <NavDropdown.Item href='/estates/create'>Add estate</NavDropdown.Item>}
+                        {!email &&
+                            <NavDropdown.Item>
+                                <Nav.Link as={Link} to='/login'>Login</Nav.Link>
+                            </NavDropdown.Item>}
+                        {email &&
+                            <NavDropdown.Item >
+                                <Nav.Link as={Link} to='/estates/create'>Add estate</Nav.Link>
+                            </NavDropdown.Item>}
                         {email && <NavDropdown.Divider />}
-                        {email && <NavDropdown.Item href='/login'>Logout</NavDropdown.Item>}
+                        {email &&
+                            <NavDropdown.Item>
+                                <Nav.Link as={Link} to='/logout'>Logout</Nav.Link>
+                            </NavDropdown.Item>}
                     </NavDropdown>
 
                 </Nav>

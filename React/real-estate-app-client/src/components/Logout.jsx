@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import api from "../api/helpers/Api";
 import AuthContext from "../api/contexts/authContext";
 
-// import Cookies from 'js-cookie';
+import Cookies from 'js-cookie';
 
 
 const Logout = () => {
@@ -13,9 +13,9 @@ const Logout = () => {
 
   useEffect(() => {
     api.post('logout')
-    // .then(Cookies.remove('jwt', {domain: 'localhost', path: '/'}))
     .then(setCredentials({}))
-    .then(navigate('/'));
+    .then(navigate('/'))
+    .catch(err => console.log(err));
   }, [])
 }
 

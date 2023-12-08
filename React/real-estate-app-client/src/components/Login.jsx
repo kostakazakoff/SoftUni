@@ -7,11 +7,11 @@ import { useNavigate } from "react-router-dom";
 import api from "../api/helpers/Api";
 import AuthContext from "../api/contexts/authContext";
 
-import axios from "axios";
+import Cookies from 'js-cookie';
 
 
 const Login = () => {
-    const { setCredentials } = useContext(AuthContext);
+    const { setCredentials, jwt } = useContext(AuthContext);
     const [user, setUser] = useState({});
 
     const navigate = useNavigate();
@@ -23,15 +23,16 @@ const Login = () => {
     const SubmitHandler = (e) => {
         e.preventDefault();
 
-        // axios.get('http://localhost:8000/sanctum/csrf-cookie')
-        // .then(
-            api.post('login', user)
-            .then(setCredentials(credentials => ({ ...credentials, ...user })))
+        api.post('login', user)
+            .then(response => setCredentials(credentials => ({
+                ...credentials,
+                ...user,
+                'jwt': response.data.jwt,
+                'user_id': response.data.user_id
+            })))
+            .then(Cookies.set('jwt', jwt))
             .then(navigate('/estates'))
             .catch(err => console.log(err))
-        // )
-        // .catch(err => console.log(err));
-        
     }
 
     return (

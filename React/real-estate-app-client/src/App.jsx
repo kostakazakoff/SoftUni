@@ -35,11 +35,15 @@ function App() {
     .then(result => console.log('Current USER', result));
   }, [])
 
+  console.log('Credentials: ', credentials)
+
   return (
     <>
       <AuthContext.Provider value={{
+        user_id: credentials.user_id,
         email: credentials.email,
-        isAuthenticated: !!credentials.email,
+        jwt: credentials.jwt,
+        isAuthenticated: !!credentials.jwt,
         setCredentials: setCredentials,
       }} >
         <Navigation credentials={credentials} />
