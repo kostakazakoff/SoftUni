@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import api from "../api/helpers/Api";
@@ -10,11 +10,9 @@ const Logout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    api.post('logout')
-      .then(setCredentials({}))
-      .then(navigate('/'))
-      .catch((err) => console.log(err));
-  }, []);
+    setCredentials({})
+    .then(navigate('/'));
+  }, [])
 }
 
 export default Logout;

@@ -12,14 +12,28 @@ import Login from "./components/Login";
 import Logout from "./components/Logout";
 import Footer from "./components/Footer";
 
+import api from "./api/helpers/Api";
+
 
 function App() {
 
   const [credentials, setCredentials] = useState({});
 
   useEffect(() => {
-    console.log(credentials);
+    localStorage.setItem('credentials', JSON.stringify(credentials));
   }, [credentials])
+
+  useEffect(() => {
+    const savedCredentials = JSON.parse(localStorage.getItem('credentials'));
+    if (savedCredentials !== null) {
+      setCredentials(state => ({...state, ...savedCredentials}));
+    }
+  }, [])
+
+  useEffect(() => {
+    api.get('user')
+    .then(result => console.log('Current USER', result));
+  }, [])
 
   return (
     <>
