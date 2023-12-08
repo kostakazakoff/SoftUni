@@ -38,7 +38,8 @@ function App() {
   return (
     <>
       <AuthContext.Provider value={{
-        credentials: credentials,
+        email: credentials.email,
+        isAuthenticated: !!credentials.email,
         setCredentials: setCredentials,
       }} >
         <Navigation credentials={credentials} />

@@ -10,9 +10,9 @@ import AuthContext from "../api/contexts/authContext";
 
 
 const Navigation = () => {
-    const { credentials } = useContext(AuthContext);
+    const { email, isAuthenticated } = useContext(AuthContext);
 
-    console.log(credentials);
+    console.log('isAuthenticated: ' + isAuthenticated);
     return (
         <Navbar variant='pills' sticky="top" expand="lg" className="bg-body-tertiary shadow p-3" style={{ opacity: '0.9' }}>
             <Navbar.Brand as={Link} to='/'>Real Estates Site</Navbar.Brand>
@@ -25,11 +25,11 @@ const Navigation = () => {
                     <Nav.Link as={Link} to='/estates'>Estates</Nav.Link>
                     
 
-                    <NavDropdown title={credentials.email ? credentials.email : 'USER'} id="basic-nav-dropdown" align={{ lg: 'end' }}>
-                        {!credentials.email && <NavDropdown.Item href='/login'>Login</NavDropdown.Item>}
-                        {credentials.email && <NavDropdown.Item href='/estates/create'>Add estate</NavDropdown.Item>}
-                        {credentials.email && <NavDropdown.Divider />}
-                        {credentials.email && <NavDropdown.Item href='/login'>Logout</NavDropdown.Item>}
+                    <NavDropdown title={email ? email : 'USER'} id="basic-nav-dropdown" align={{ lg: 'end' }}>
+                        {!email && <NavDropdown.Item href='/login'>Login</NavDropdown.Item>}
+                        {email && <NavDropdown.Item href='/estates/create'>Add estate</NavDropdown.Item>}
+                        {email && <NavDropdown.Divider />}
+                        {email && <NavDropdown.Item href='/login'>Logout</NavDropdown.Item>}
                     </NavDropdown>
 
                 </Nav>

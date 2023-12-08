@@ -6,7 +6,7 @@ const api = axios.create({
     withXSRFToken: true,
     headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/json'
     },
 });
 

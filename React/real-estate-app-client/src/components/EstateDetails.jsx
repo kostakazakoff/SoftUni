@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Figure } from "react-bootstrap";
 import api from "../api/helpers/Api";
-import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
 
 const EstateDetails = () => {
     const { id } = useParams();

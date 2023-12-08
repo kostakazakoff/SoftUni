@@ -27,13 +27,14 @@ const CreateEstate = () => {
         e.preventDefault();
 
         api.get('user')
-            .then(response => response.data.user.id)
+            // .then(response => console.log(response.data.id))
+            .then(response => response.data.id)
             .then(user_id => setFormData(state => ({ ...state, 'user_id': user_id })))
             .then(
                 api.post('real-estates/create', { ...formData })
                     .catch(err => console.error(err))
             )
-            .then(navigate('/estates'))
+            // .then(navigate('/estates'))
             .catch(err => console.error(err));
     }
 
