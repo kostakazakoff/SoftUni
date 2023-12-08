@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import api from "../api/helpers/Api";
-import AuthContext from "../api/contexts/authContext";
+import api from "../../api/helpers/Api";
+import AuthContext from "../../api/contexts/authContext";
 
 import Cookies from 'js-cookie';
 
@@ -13,6 +13,7 @@ const Logout = () => {
 
   useEffect(() => {
     api.post('logout')
+    .then(response => console.log(response.data.message))
     .then(setCredentials({}))
     .then(navigate('/'))
     .catch(err => console.log(err));

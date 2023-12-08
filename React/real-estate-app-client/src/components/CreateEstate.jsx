@@ -32,6 +32,7 @@ const CreateEstate = () => {
 
         setFormData(state => ({ ...state, 'user_id': user_id }))
         api.post('real-estates/create', { ...formData })
+        .then(navigate('/estates'))
             .catch(err => console.error(err));
     }
 

@@ -7,10 +7,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import AuthContext from "../api/contexts/authContext";
+import Path from '../paths';
 
 
 const Navigation = () => {
-    const { email, isAuthenticated } = useContext(AuthContext);
+    const { email, isAuthenticated, jwt } = useContext(AuthContext);
 
     console.log('isAuthenticated: ' + isAuthenticated);
     return (
@@ -25,19 +26,23 @@ const Navigation = () => {
                     <Nav.Link as={Link} to='/estates'>Estates</Nav.Link>
 
 
-                    <NavDropdown title={email ? email : 'USER'} id="basic-nav-dropdown" align={{ lg: 'end' }}>
-                        {!email &&
+                    <NavDropdown title={email ? email : 'USER'} id="basic-nav-dropdown" >
+                        {!jwt &&
                             <NavDropdown.Item>
-                                <Nav.Link as={Link} to='/login'>Login</Nav.Link>
+                                <Nav.Link as={Link} to={Path.LOGIN}>Login</Nav.Link>
                             </NavDropdown.Item>}
-                        {email &&
+                        {!jwt &&
+                            <NavDropdown.Item>
+                                <Nav.Link as={Link} to={Path.REGISTER}>Register</Nav.Link>
+                            </NavDropdown.Item>}
+                        {jwt &&
                             <NavDropdown.Item >
-                                <Nav.Link as={Link} to='/estates/create'>Add estate</Nav.Link>
+                                <Nav.Link as={Link} to={Path.CREATE_ESTATE}>Add estate</Nav.Link>
                             </NavDropdown.Item>}
-                        {email && <NavDropdown.Divider />}
-                        {email &&
+                        {jwt && <NavDropdown.Divider />}
+                        {jwt &&
                             <NavDropdown.Item>
-                                <Nav.Link as={Link} to='/logout'>Logout</Nav.Link>
+                                <Nav.Link as={Link} to={Path.LOGOUT}>Logout</Nav.Link>
                             </NavDropdown.Item>}
                     </NavDropdown>
 

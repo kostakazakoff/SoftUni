@@ -8,11 +8,13 @@ import Home from './components/Home';
 import EstatesList from './components/EstatesList';
 import EstateDetails from './components/EstateDetails';
 import CreateEstate from "./components/CreateEstate";
-import Login from "./components/Login";
-import Logout from "./components/Logout";
+import Login from "./components/Auth/Login";
+import Logout from "./components/Auth/Logout";
 import Footer from "./components/Footer";
 
 import api from "./api/helpers/Api";
+import Path from "./paths";
+import Register from "./components/Auth/Register";
 
 
 function App() {
@@ -49,13 +51,14 @@ function App() {
         <Navigation credentials={credentials} />
 
         <Routes>
-          <Route path='/login' element={<Login />} />
-          <Route path='/logout' element={<Logout />} />
+          <Route path={Path.LOGIN} element={<Login />} />
+          <Route path={Path.LOGOUT} element={<Logout />} />
+          <Route path={Path.REGISTER} element={<Register />} />
 
-          <Route path="/" element={<Home />} />
-          <Route path="/estates" element={<EstatesList />} />
-          <Route path="/estates/:id" element={<EstateDetails />} />
-          <Route path="/estates/create" element={<CreateEstate />} />
+          <Route path={Path.HOME} element={<Home />} />
+          <Route path={Path.ESTATES} element={<EstatesList />} />
+          <Route path={Path.SHOW_ESTATE} element={<EstateDetails />} />
+          <Route path={Path.CREATE_ESTATE} element={<CreateEstate />} />
         </Routes>
 
         {/* <Footer /> */}

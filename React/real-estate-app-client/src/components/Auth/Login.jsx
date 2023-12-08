@@ -4,10 +4,8 @@ import Button from 'react-bootstrap/Button';
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import api from "../api/helpers/Api";
-import AuthContext from "../api/contexts/authContext";
-
-import Cookies from 'js-cookie';
+import api from "../../api/helpers/Api";
+import AuthContext from "../../api/contexts/authContext";
 
 
 const Login = () => {
@@ -23,6 +21,10 @@ const Login = () => {
     const SubmitHandler = (e) => {
         e.preventDefault();
 
+        if (!user.email || !user.password) {
+            throw new Error('Please enter your email and password');
+        }
+
         api.post('login', user)
             .then(response => setCredentials(credentials => ({
                 ...credentials,
@@ -30,7 +32,6 @@ const Login = () => {
                 'jwt': response.data.jwt,
                 'user_id': response.data.user_id
             })))
-            .then(Cookies.set('jwt', jwt))
             .then(navigate('/estates'))
             .catch(err => console.log(err))
     }
