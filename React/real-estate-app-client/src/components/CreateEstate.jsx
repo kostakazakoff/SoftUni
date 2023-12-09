@@ -7,6 +7,7 @@ import api from "../api/helpers/Api";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../api/contexts/authContext";
+import Path from "../paths";
 
 const CreateEstate = () => {
     let [formData, setFormData] = useState({ 'currency': 'BGN', 'category_id': '1' });
@@ -21,7 +22,7 @@ const CreateEstate = () => {
     axios.defaults.withXSRFToken = true;
 
     useEffect(() => {
-        api.get('list-categories')
+        api.get(Path.CATEGORIES)
             .then(categories => categories.data)
             .then(result => setCategories(result))
             .catch(e => console.log(e));

@@ -26,11 +26,12 @@ const Login = () => {
         }
 
         api.post('login', user)
-            .then(response => setCredentials(credentials => ({
-                ...credentials,
-                ...user,
-                'jwt': response.data.jwt,
-            })))
+            .then(
+                response => setCredentials(credentials => ({
+                    ...credentials,
+                    ...response.data.user,
+                    'jwt': response.data.jwt,
+                })))
             .then(navigate('/estates'))
             .catch(err => console.log(err))
     }

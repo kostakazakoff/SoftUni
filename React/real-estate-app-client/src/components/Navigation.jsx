@@ -11,12 +11,16 @@ import Path from '../paths';
 
 
 const Navigation = () => {
-    const { email, isAuthenticated, jwt } = useContext(AuthContext);
+    const { username, email, isAuthenticated, jwt } = useContext(AuthContext);
+
+    const title = () => {
+        return username ? username : email;
+    }
 
     console.log(`isAuthenticated: ${isAuthenticated}`);
     return (
         <Navbar variant='pills' sticky="top" expand="lg" className="bg-body-tertiary shadow p-3" style={{ opacity: '0.9' }}>
-            <Navbar.Brand as={Link} to='/'>Real Estates Site</Navbar.Brand>
+            <Navbar.Brand as={Link} to='/'>RentProperty</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
@@ -26,7 +30,7 @@ const Navigation = () => {
                     <Nav.Link as={Link} to='/estates'>Estates</Nav.Link>
 
 
-                    <NavDropdown title={email ? email : 'USER'} id="basic-nav-dropdown" >
+                    <NavDropdown title={title() ? title() : 'USER'} id="basic-nav-dropdown" >
                         {!jwt &&
                             <NavDropdown.Item>
                                 <Nav.Link as={Link} to={Path.LOGIN}>Login</Nav.Link>

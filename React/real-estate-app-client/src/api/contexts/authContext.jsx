@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
     console.log('Logged in: ', credentials.email);
 
     const userProps = {
+        username: credentials.name,
         user_id: credentials.id,
         email: credentials.email,
         jwt: credentials.jwt,
