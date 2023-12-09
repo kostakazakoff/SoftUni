@@ -1,7 +1,5 @@
 /* eslint-disable react/prop-types */
 import { createContext } from "react";
-import { useEffect } from "react";
-import api from "../helpers/Api";
 import usePersistedState from "../hooks/usePersistedState";
 
 const AuthContext = createContext();

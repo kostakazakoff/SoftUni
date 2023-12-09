@@ -2,6 +2,7 @@ import { useState } from "react";
 
 
 export default function usePersistedState(key, defaultState) {
+
     const [state, setState] = useState(() => {
         const persistedState = localStorage.getItem(key);
         
@@ -12,7 +13,8 @@ export default function usePersistedState(key, defaultState) {
         return defaultState;
     });
 
-    const setPersistedState = (value) => {
+
+    const setPersistedState = (value) => { // can be value *{}* or function *() => {}*
         setState(value);
 
         let serializedValue;
