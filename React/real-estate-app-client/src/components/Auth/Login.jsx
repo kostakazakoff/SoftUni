@@ -46,7 +46,7 @@ const Login = () => {
                         <Form.Control
                             type="email"
                             name="email"
-                            value={user.email ? user.email : ''}
+                            value={user.email || ''}
                             onChange={handleCredentialsChange}
                         />
                     </Form.Group>
@@ -56,7 +56,7 @@ const Login = () => {
                         <Form.Control
                             type="password"
                             name="password"
-                            value={user.password ? user.password : ''}
+                            value={user.password || ''}
                             onChange={handleCredentialsChange}
                         />
                     </Form.Group>

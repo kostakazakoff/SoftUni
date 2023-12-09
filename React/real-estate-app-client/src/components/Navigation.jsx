@@ -11,11 +11,7 @@ import Path from '../paths';
 
 
 const Navigation = () => {
-    const { username, email, isAuthenticated, jwt } = useContext(AuthContext);
-
-    const title = () => {
-        return username ? username : email;
-    }
+    const { username, isAuthenticated, jwt } = useContext(AuthContext);
 
     console.log(`isAuthenticated: ${isAuthenticated}`);
     return (
@@ -30,7 +26,7 @@ const Navigation = () => {
                     <Nav.Link as={Link} to='/estates'>Estates</Nav.Link>
 
 
-                    <NavDropdown title={title() ? title() : 'USER'} id="basic-nav-dropdown" >
+                    <NavDropdown title={username || 'USER'} id="basic-nav-dropdown" >
                         {!jwt &&
                             <NavDropdown.Item>
                                 <Nav.Link as={Link} to={Path.LOGIN}>Login</Nav.Link>

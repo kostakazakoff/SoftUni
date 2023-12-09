@@ -48,7 +48,7 @@ const Register = () => {
                         <Form.Control
                             type="text"
                             name="name"
-                            value={user.name ? user.name : ''}
+                            value={user.name || ''}
                             onChange={handleCredentialsChange}
                         />
                     </Form.Group>
@@ -58,7 +58,7 @@ const Register = () => {
                         <Form.Control
                             type="email"
                             name="email"
-                            value={user.email ? user.email : ''}
+                            value={user.email || ''}
                             onChange={handleCredentialsChange}
                         />
                     </Form.Group>
@@ -68,7 +68,7 @@ const Register = () => {
                         <Form.Control
                             type="password"
                             name="password"
-                            value={user.password ? user.password : ''}
+                            value={user.password || ''}
                             onChange={handleCredentialsChange}
                         />
                     </Form.Group>
@@ -78,7 +78,7 @@ const Register = () => {
                         <Form.Control
                             type="password"
                             name="re_password"
-                            value={user.re_password ? user.re_password : ''}
+                            value={user.re_password || ''}
                             onChange={handleCredentialsChange}
                         />
                     </Form.Group>
