@@ -9,7 +9,7 @@ import AuthContext from "../../api/contexts/authContext";
 
 
 const Login = () => {
-    const { setCredentials, jwt } = useContext(AuthContext);
+    const { setCredentials } = useContext(AuthContext);
     const [user, setUser] = useState({});
 
     const navigate = useNavigate();
@@ -30,7 +30,6 @@ const Login = () => {
                 ...credentials,
                 ...user,
                 'jwt': response.data.jwt,
-                // 'user_id': response.data.user_id
             })))
             .then(navigate('/estates'))
             .catch(err => console.log(err))

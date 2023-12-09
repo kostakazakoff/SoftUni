@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
 
     console.log('Logged in: ', credentials.email);
 
-    const values = {
+    const userProps = {
         user_id: credentials.id,
         email: credentials.email,
         jwt: credentials.jwt,
@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={values}>
+        <AuthContext.Provider value={userProps}>
             {children}
         </AuthContext.Provider >
     )
