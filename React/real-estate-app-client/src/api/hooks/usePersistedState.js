@@ -21,12 +21,6 @@ export default function usePersistedState(key, defaultState) {
         ? serializedValue = JSON.stringify(value(state))
         : serializedValue = JSON.stringify(value);
 
-        // let serializedValue = state;
-
-        // if (typeof value === "function") {
-        //     serializedValue = JSON.stringify(value(state));
-        // }
-
         localStorage.setItem(key, serializedValue);
     }
 
