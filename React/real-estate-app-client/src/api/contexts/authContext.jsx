@@ -12,14 +12,14 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         localStorage.setItem('credentials', JSON.stringify(credentials));
-    }, [credentials])
+    }, [credentials]);
 
     useEffect(() => {
         const savedCredentials = JSON.parse(localStorage.getItem('credentials'));
         if (savedCredentials !== null) {
             setCredentials(state => ({ ...state, ...savedCredentials }));
         }
-    }, [])
+    }, []);
 
     useEffect(() => {
         if (credentials.isAuthenticated) {
@@ -28,9 +28,9 @@ export const AuthProvider = ({ children }) => {
         }
 
         console.log('Not authenticated');
-    }, [])
+    }, []);
 
-    console.log('Credentials: ', credentials)
+    console.log('Logged in: ', credentials.email);
 
     const values = {
         user_id: credentials.id,
