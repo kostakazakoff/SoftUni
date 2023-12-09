@@ -13,7 +13,7 @@ import Path from '../paths';
 const Navigation = () => {
     const { email, isAuthenticated, jwt } = useContext(AuthContext);
 
-    console.log('isAuthenticated: ' + isAuthenticated);
+    console.log(`isAuthenticated: ${isAuthenticated}`);
     return (
         <Navbar variant='pills' sticky="top" expand="lg" className="bg-body-tertiary shadow p-3" style={{ opacity: '0.9' }}>
             <Navbar.Brand as={Link} to='/'>Real Estates Site</Navbar.Brand>

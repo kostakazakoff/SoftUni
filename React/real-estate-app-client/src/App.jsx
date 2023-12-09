@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
 import { Routes, Route } from 'react-router-dom';
 
-import AuthContext from "./api/contexts/authContext";
+import { AuthProvider } from "./api/contexts/authContext";
 
 import Navigation from "./components/Navigation";
 import Home from './components/Home';
@@ -12,43 +11,17 @@ import Login from "./components/Auth/Login";
 import Logout from "./components/Auth/Logout";
 import Footer from "./components/Footer";
 
-import api from "./api/helpers/Api";
 import Path from "./paths";
 import Register from "./components/Auth/Register";
 
 
 function App() {
 
-  const [credentials, setCredentials] = useState({});
-
-  useEffect(() => {
-    localStorage.setItem('credentials', JSON.stringify(credentials));
-  }, [credentials])
-
-  useEffect(() => {
-    const savedCredentials = JSON.parse(localStorage.getItem('credentials'));
-    if (savedCredentials !== null) {
-      setCredentials(state => ({...state, ...savedCredentials}));
-    }
-  }, [])
-
-  useEffect(() => {
-    api.get('user')
-    .then(result => console.log('Current USER', result));
-  }, [])
-
-  console.log('Credentials: ', credentials)
-
   return (
     <>
-      <AuthContext.Provider value={{
-        user_id: credentials.user_id,
-        email: credentials.email,
-        jwt: credentials.jwt,
-        isAuthenticated: !!credentials.jwt,
-        setCredentials: setCredentials,
-      }} >
-        <Navigation credentials={credentials} />
+      <AuthProvider>
+
+        <Navigation/>
 
         <Routes>
           <Route path={Path.LOGIN} element={<Login />} />
@@ -62,7 +35,8 @@ function App() {
         </Routes>
 
         {/* <Footer /> */}
-      </AuthContext.Provider>
+        
+      </AuthProvider>
     </>
   )
 }

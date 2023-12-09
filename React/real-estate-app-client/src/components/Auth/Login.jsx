@@ -30,7 +30,7 @@ const Login = () => {
                 ...credentials,
                 ...user,
                 'jwt': response.data.jwt,
-                'user_id': response.data.user_id
+                // 'user_id': response.data.user_id
             })))
             .then(navigate('/estates'))
             .catch(err => console.log(err))
