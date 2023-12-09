@@ -1,34 +1,15 @@
 /* eslint-disable react/prop-types */
 import { createContext } from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import api from "../helpers/Api";
+import usePersistedState from "../hooks/usePersistedState";
 
 const AuthContext = createContext();
 
 AuthContext.displayName = 'AuthContext';
 
 export const AuthProvider = ({ children }) => {
-    const [credentials, setCredentials] = useState({});
-
-    useEffect(() => {
-        localStorage.setItem('credentials', JSON.stringify(credentials));
-    }, [credentials]);
-
-    useEffect(() => {
-        const savedCredentials = JSON.parse(localStorage.getItem('credentials'));
-        if (savedCredentials !== null) {
-            setCredentials(state => ({ ...state, ...savedCredentials }));
-        }
-    }, []);
-
-    useEffect(() => {
-        if (credentials.isAuthenticated) {
-            api.get('user')
-                .then(result => console.log('Current USER', result));
-        }
-
-        console.log('Not authenticated');
-    }, []);
+    const [credentials, setCredentials] = usePersistedState('auth', {});
 
     console.log('Logged in: ', credentials.email);
 
