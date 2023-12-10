@@ -1,17 +1,10 @@
 import Carousel from 'react-bootstrap/Carousel';
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import CarouselImage from './CarouselImage';
-import api from '../api/helpers/Api';
-import Path from '../paths';
+import CategoriesContext from '../api/contexts/CategoriesContext';
 
 export default function Home() {
-  const [categories, setCategories] = useState([]);
-
-  useEffect(() => {
-    api.get(Path.CATEGORIES)
-    .then(response => response.data)
-      .then(state => setCategories(state));
-  }, []);
+  const categories = useContext(CategoriesContext);
 
   return (
     <Carousel style={{ textAlign: 'center' }}>

@@ -25,7 +25,6 @@ const Navigation = () => {
 
                     <Nav.Link as={Link} to='/estates'>Estates</Nav.Link>
 
-
                     <NavDropdown title={username || 'USER'} id="basic-nav-dropdown" >
                         {!jwt &&
                             <NavDropdown.Item>

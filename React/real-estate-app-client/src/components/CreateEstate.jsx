@@ -1,53 +1,46 @@
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { Container } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useState, useEffect } from "react";
-import axios from "axios";
+
 import api from "../api/helpers/Api";
-import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
 import AuthContext from "../api/contexts/authContext";
-import Path from "../paths";
+import CategoriesContext from '../api/contexts/CategoriesContext';
 
 const CreateEstate = () => {
-    let [formData, setFormData] = useState({ 'currency': 'BGN', 'category_id': '1' });
-    const [categories, setCategories] = useState([]);
+    let [estateData, setEstateData] = useState({ 'currency': 'BGN', 'category_id': '1' });
+    const categories = useContext(CategoriesContext);
     const [selectedCategory, setSelectedCategory] = useState(1);
 
     const { user_id } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
-    axios.defaults.withCredentials = true;
-    axios.defaults.withXSRFToken = true;
-
-    useEffect(() => {
-        api.get(Path.CATEGORIES)
-            .then(categories => categories.data)
-            .then(result => setCategories(result))
-            .catch(e => console.log(e));
-    }, []);
-
     const SubmitHandler = (e) => {
         e.preventDefault();
 
-        setFormData(state => ({ ...state, 'user_id': user_id }))
-        api.post('real-estates/create', { ...formData })
+        api.post('real-estates/create', { ...estateData })
         .then(navigate('/estates'))
             .catch(err => console.error(err));
     }
 
     const handleData = (e) => {
-        setFormData(state => ({ ...state, [e.target.name]: e.target.value }));
+        setEstateData(state => ({
+            ...state,
+            [e.target.name]: e.target.value,
+            'user_id': user_id
+        }));
     }
 
     const handleImages = (e) => {
-        setFormData(state => ({ ...state, 'images': e.target.files }));
+        setEstateData(state => ({ ...state, 'images': e.target.files }));
     }
 
     const handleCategoryChange = (e) => {
         setSelectedCategory(e.target.value);
-        setFormData(state => ({ ...state, 'category_id': Number(e.target.value) }));
+        setEstateData(state => ({ ...state, 'category_id': Number(e.target.value) }));
     }
 
     return (
@@ -60,7 +53,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="text"
                             name="name"
-                            value={formData.name ? formData.name : ''}
+                            value={estateData.name ? estateData.name : ''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -70,7 +63,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="text"
                             name="location"
-                            value={formData.location ? formData.location : ''}
+                            value={estateData.location ? estateData.location : ''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -80,7 +73,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="text"
                             name="description"
-                            value={formData.description ? formData.description : ''}
+                            value={estateData.description ? estateData.description : ''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -90,14 +83,14 @@ const CreateEstate = () => {
                         <Form.Control
                             type="number"
                             name="price"
-                            value={formData.price ? formData.price : ''}
+                            value={estateData.price ? estateData.price : ''}
                             onChange={handleData}
                         />
                     </Form.Group>
 
                     <Form.Group className="mb-3">
                         <Form.Label>Currency</Form.Label>
-                        <Form.Select value={formData.currency ? formData.currency : 'BGN'} onChange={handleData} name='currency'>
+                        <Form.Select value={estateData.currency ? estateData.currency : 'BGN'} onChange={handleData} name='currency'>
                             <option key='BGN' value='BGN'>BGN</option>
                             <option key='EUR' value='EUR'>EUR</option>
                             <option key='USD' value='USD'>USD</option>
@@ -109,7 +102,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="text"
                             name="latitude"
-                            value={formData.latitude ? formData.latitude : ''}
+                            value={estateData.latitude ? estateData.latitude : ''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -119,7 +112,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="text"
                             name="longitude"
-                            value={formData.longitude ? formData.longitude : ''}
+                            value={estateData.longitude ? estateData.longitude : ''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -140,7 +133,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="number"
                             name="rooms"
-                            value={formData.rooms ? formData.rooms : ''}
+                            value={estateData.rooms ? estateData.rooms : ''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -150,7 +143,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="text"
                             name="arrive_hour"
-                            value={formData.arrive_hour ? formData.arrive_hour : ''}
+                            value={estateData.arrive_hour ? estateData.arrive_hour : ''}
                             onChange={handleData}
                         />
                     </Form.Group>
@@ -160,7 +153,7 @@ const CreateEstate = () => {
                         <Form.Control
                             type="text"
                             name="leave_hour"
-                            value={formData.leave_hour ? formData.leave_hour : ''}
+                            value={estateData.leave_hour ? estateData.leave_hour : ''}
                             onChange={handleData}
                         />
                     </Form.Group>
