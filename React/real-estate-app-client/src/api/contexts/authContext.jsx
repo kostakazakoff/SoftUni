@@ -9,7 +9,7 @@ AuthContext.displayName = 'AuthContext';
 export const AuthProvider = ({ children }) => {
     const [credentials, setCredentials] = usePersistedState('auth', {});
 
-    console.log('Logged in: ', credentials.email);
+    console.log('Logged in: ', credentials.email || 'GUEST');
 
     const userProps = {
         username: credentials.name,

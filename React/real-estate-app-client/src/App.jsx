@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 
 import { AuthProvider } from "./api/contexts/authContext";
 
@@ -16,7 +15,6 @@ import Path from "./paths";
 import Register from "./components/Auth/Register";
 import CategoriesContext from './api/contexts/CategoriesContext';
 import LoadCategories from './components/LoadCategories';
-import api from './api/helpers/Api';
 
 
 function App() {

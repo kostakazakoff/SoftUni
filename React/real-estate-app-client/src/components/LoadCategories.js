@@ -8,7 +8,7 @@ const LoadCategories = () => {
     useEffect(() => {
         api.get(Path.CATEGORIES)
             .then(response => response.data)
-            .then(loadedCategories => setCategories(state => ([...state, ...loadedCategories])))
+            .then(loadedCategories => setCategories([...loadedCategories]))
             .catch(e => console.log(e));
     }, []);
 
