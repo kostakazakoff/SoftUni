@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const EstateCard = (estate) => {
     return (
-            <Card className="card shadow" style={{ width: '18rem' }} key={estate.id}>
+            <Card className="card shadow" style={{ width: '19rem' }} key={estate.id}>
                 <Card.Img variant="top" src={estate.thumb}/>
                 <Card.Body>
                     <Card.Title>{estate.name}</Card.Title>

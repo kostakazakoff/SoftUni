@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import { Container } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
@@ -32,8 +32,8 @@ const Register = () => {
         api.post('register', user)
             .then(response => {
                 response.data.success
-                ? navigate(Path.LOGIN)
-                : console.log(response.data.message)
+                    ? navigate(Path.LOGIN)
+                    : console.log(response.data.message)
             })
             .catch(err => console.log(err))
     }
@@ -41,6 +41,11 @@ const Register = () => {
     return (
         <>
             <Container style={{ width: '30%', margin: '60px auto' }}>
+                <Container style={{ textAlign: "center", marginBottom: "2rem" }}>
+                    <div style={{ fontSize: '3rem', }}>Signup</div>
+                    <Link to={'/login'} style={{ color: "#0d6efd", textDecoration: "none" }}>Or login to an existing account</Link>
+                </Container>
+
                 <Form id='creste' onSubmit={SubmitHandler}>
 
                     <Form.Group className="mb-3" controlId="name">
@@ -86,7 +91,6 @@ const Register = () => {
                     <Button variant="primary" type="submit">
                         Register
                     </Button>
-
                 </Form>
             </Container>
         </>

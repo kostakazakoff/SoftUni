@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Container } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
@@ -40,6 +40,12 @@ const Login = () => {
     return (
         <>
             <Container style={{ width: '30%', margin: '60px auto' }}>
+                <Container style={{ textAlign: "center", marginBottom: "2rem" }}>
+                    <div style={{ fontSize: '3rem', }}>Log in to your account</div>
+                    <Link to={'/register'} style={{ color: "#0d6efd", textDecoration: "none" }}>Or register a new user</Link>
+                </Container>
+
+
                 <Form id='creste' onSubmit={SubmitHandler}>
                     <Form.Group className="mb-3" controlId="email">
                         <Form.Label>Email</Form.Label>

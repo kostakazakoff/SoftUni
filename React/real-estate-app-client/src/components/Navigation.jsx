@@ -19,31 +19,33 @@ const Navigation = () => {
             <Navbar.Brand as={Link} to='/'>RentProperty</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto">
+                <Nav className="ms-auto">
 
                     <Nav.Link as={Link} to='/'>Home</Nav.Link>
 
                     <Nav.Link as={Link} to='/estates'>Estates</Nav.Link>
 
-                    <NavDropdown title={username || 'USER'} id="basic-nav-dropdown" >
-                        {!jwt &&
-                            <NavDropdown.Item>
-                                <Nav.Link as={Link} to={Path.LOGIN}>Login</Nav.Link>
-                            </NavDropdown.Item>}
-                        {!jwt &&
-                            <NavDropdown.Item>
-                                <Nav.Link as={Link} to={Path.REGISTER}>Register</Nav.Link>
-                            </NavDropdown.Item>}
-                        {jwt &&
-                            <NavDropdown.Item >
-                                <Nav.Link as={Link} to={Path.CREATE_ESTATE}>Add estate</Nav.Link>
-                            </NavDropdown.Item>}
-                        {jwt && <NavDropdown.Divider />}
-                        {jwt &&
-                            <NavDropdown.Item>
-                                <Nav.Link as={Link} to={Path.LOGOUT}>Logout</Nav.Link>
-                            </NavDropdown.Item>}
-                    </NavDropdown>
+                    <Nav className="ms-auto">
+                        <NavDropdown title={username || 'Guest'} id="basic-nav-dropdown" align="end">
+                            {!jwt &&
+                                <NavDropdown.Item>
+                                    <Nav.Link as={Link} to={Path.LOGIN}>Login</Nav.Link>
+                                </NavDropdown.Item>}
+                            {!jwt &&
+                                <NavDropdown.Item>
+                                    <Nav.Link as={Link} to={Path.REGISTER}>Register</Nav.Link>
+                                </NavDropdown.Item>}
+                            {jwt &&
+                                <NavDropdown.Item >
+                                    <Nav.Link as={Link} to={Path.CREATE_ESTATE}>Add estate</Nav.Link>
+                                </NavDropdown.Item>}
+                            {jwt && <NavDropdown.Divider />}
+                            {jwt &&
+                                <NavDropdown.Item>
+                                    <Nav.Link as={Link} to={Path.LOGOUT}>Logout</Nav.Link>
+                                </NavDropdown.Item>}
+                        </NavDropdown>
+                    </Nav>
 
                 </Nav>
             </Navbar.Collapse>

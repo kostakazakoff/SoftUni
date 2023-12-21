@@ -10,19 +10,39 @@ import AuthContext from "../api/contexts/authContext";
 import CategoriesContext from '../api/contexts/CategoriesContext';
 
 const CreateEstate = () => {
+    const navigate = useNavigate();
+    const { user_id, isAuthenticated } = useContext(AuthContext);
+
+    if (!isAuthenticated) {navigate('/login');}
+    
     let [estateData, setEstateData] = useState({ 'currency': 'BGN', 'category_id': '1' });
     const categories = useContext(CategoriesContext);
     const [selectedCategory, setSelectedCategory] = useState(1);
 
-    const { user_id } = useContext(AuthContext);
-
-    const navigate = useNavigate();
-
     const SubmitHandler = (e) => {
         e.preventDefault();
 
-        api.post('real-estates/create', { ...estateData })
-        .then(navigate('/estates'))
+        const data = new FormData();
+
+        Object.entries(estateData).forEach(
+            ([key, value]) => {
+                if (key != 'images') {
+                    data.append(key, value);
+                }
+                else {
+                    for (let i = 0; i < value.length; i++) {
+                        data.append(`images`, value[i]);
+                    }
+                }
+            }
+        );
+
+        for (let pair of data.entries()) {
+            console.log(pair[0] + ', ' + pair[1]);
+        }
+
+        api.post('real-estates/create', { ...data })
+            // .then(navigate('/estates'))
             .catch(err => console.error(err));
     }
 
@@ -35,12 +55,18 @@ const CreateEstate = () => {
     }
 
     const handleImages = (e) => {
-        setEstateData(state => ({ ...state, 'images': e.target.files }));
+        setEstateData(state => ({
+            ...state,
+            'images': e.target.files
+        }));
     }
 
     const handleCategoryChange = (e) => {
         setSelectedCategory(e.target.value);
-        setEstateData(state => ({ ...state, 'category_id': Number(e.target.value) }));
+        setEstateData(state => ({
+            ...state,
+            'category_id': e.target.value
+        }));
     }
 
     return (
