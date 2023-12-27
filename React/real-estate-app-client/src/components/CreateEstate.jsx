@@ -31,7 +31,8 @@ const CreateEstate = () => {
                 }
                 else {
                     for (let i = 0; i < value.length; i++) {
-                        data.append(`images`, value[i]);
+                        console.log(key, value[i]);
+                        data.append('images', value[i]);
                     }
                 }
             }
@@ -39,9 +40,10 @@ const CreateEstate = () => {
 
         for (let pair of data.entries()) {
             console.log(pair[0] + ', ' + pair[1]);
+            if (pair[0] === 'images') {console.log(pair[1].name);}
         }
 
-        api.post('real-estates/create', { ...data })
+        api.post('real-estates/create', data)
             // .then(navigate('/estates'))
             .catch(err => console.error(err));
     }
@@ -71,7 +73,7 @@ const CreateEstate = () => {
 
     return (
         <>
-            <Container style={{ width: '30%', margin: '60px auto' }}>
+            <Container style={{ minWidth: '400px', width: '40%', margin: '60px auto' }}>
                 <Form id='creste' onSubmit={SubmitHandler} encType="multipart/form-data">
 
                     <Form.Group className="mb-3" controlId="name">
