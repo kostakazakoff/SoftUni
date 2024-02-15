@@ -59,7 +59,7 @@ const CreateEstate = () => {
     const handleImages = (e) => {
         setEstateData(state => ({
             ...state,
-            'images': e.target.files
+            'images': Array.from(e.target.files)
         }));
     }
 
@@ -74,7 +74,7 @@ const CreateEstate = () => {
     return (
         <>
             <Container style={{ minWidth: '400px', width: '40%', margin: '60px auto' }}>
-                <Form id='creste' onSubmit={SubmitHandler} encType="multipart/form-data">
+                <Form id='create' onSubmit={SubmitHandler} encType="multipart/form-data">
 
                     <Form.Group className="mb-3" controlId="name">
                         <Form.Label>Property name</Form.Label>

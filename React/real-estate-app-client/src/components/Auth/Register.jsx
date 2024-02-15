@@ -46,7 +46,7 @@ const Register = () => {
                     <Link to={'/login'} style={{ color: "#0d6efd", textDecoration: "none" }}>Or login to an existing account</Link>
                 </Container>
 
-                <Form id='creste' onSubmit={SubmitHandler}>
+                <Form id='create' onSubmit={SubmitHandler}>
 
                     <Form.Group className="mb-3" controlId="name">
                         <Form.Label>Username</Form.Label>
