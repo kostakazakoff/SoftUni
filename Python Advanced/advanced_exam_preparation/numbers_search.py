@@ -5,4 +5,4 @@ def numbers_searching(*args):
     return [missing_number, duplicates]
 
 #Test:
-# print(numbers_searching(50, 50, 47, 47, 48, 45, 49, 44, 47, 45, 44, 44, 48, 44, 48))
+print(numbers_searching(50, 50, 47, 47, 48, 45, 49, 44, 47, 45, 44, 44, 48, 44, 48))
